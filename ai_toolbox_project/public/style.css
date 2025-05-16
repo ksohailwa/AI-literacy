@@ -1,0 +1,147 @@
+/* 🔹 General layout and fonts */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e9f0f5;
+  color: #333;
+}
+
+/* 🔹 Header styling */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #003366;
+  padding: 1rem;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
+  margin-right: 1rem;
+}
+
+/* 🔹 Navigation links */
+.navbar a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* 🔹 Search input and button */
+.search input {
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: none;
+}
+
+.search button {
+  margin-left: 5px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  border: none;
+  background-color: #005fa3;
+  color: white;
+  border-radius: 4px;
+}
+
+/* 🔹 Page container */
+.scroll-container {
+  background-color: white;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1100px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔹 Tool cards row */
+.tool-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* 🔹 Individual tool card */
+.tool-card {
+  flex: 0 0 30%;
+  background-color: #f8f9fb;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+  min-width: 250px;
+}
+
+.tool-card:hover {
+  transform: scale(1.05);
+}
+
+/* 🔹 Add tool button */
+.add-button {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.add-button a {
+  padding: 0.7rem 1.5rem;
+  background-color: #007acc;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.add-button a:hover {
+  background-color: #005fa3;
+}
+
+/* 🔹 Forms (Contact + Submit) */
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+form button {
+  background-color: #007acc;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 🔹 Responsive layout */
+@media screen and (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tool-card {
+    flex: 0 0 100%;
+  }
+
+  .navbar {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Toolbox - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 🔹 Header -->
+  <header class="topbar">
+    <img src="assets/logo.png" alt="Logo" class="logo-img" />
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="ai_literacy.html">AI Literacy</a>
+      <a href="tools.html">All Tools</a>
+    </nav>
+    <div class="search">
+      <input type="text" id="searchInput" placeholder="Search..." />
+      <button onclick="search()">🔍</button>
+    </div>
+  </header>
+
+  <!-- 🔹 Main Section -->
+  <main class="scroll-container">
+    <h1>AI Literacy Introduction</h1>
+    <p>This platform helps people engage with AI through interactive tools and games.</p>
+
+    <!-- 3-Tool Layout -->
+    <section class="tool-row">
+      <div class="tool-card">
+        <h3>Mystery Cat</h3>
+        <img src="assets/placeholder.jpg" alt="Tool 1" />
+        <p>Learn about pattern recognition.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Bias Buster</h3>
+        <img src="assets/placeholder.jpg" alt="Tool 2" />
+        <p>Explore fairness and bias in AI.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Ethics Explorer</h3>
+        <img src="assets/placeholder.jpg" alt="Tool 3" />
+        <p>Understand ethical AI decisions.</p>
+      </div>
+    </section>
+
+    <!-- Add Tool Button -->
+    <div class="add-button">
+      <a href="submit.html">+ Add Tool</a>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
