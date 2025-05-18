@@ -1,4 +1,3 @@
-/* 🔹 General layout and fonts */
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -7,7 +6,6 @@ body {
   color: #333;
 }
 
-/* 🔹 Header styling */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -24,7 +22,6 @@ body {
   margin-right: 1rem;
 }
 
-/* 🔹 Navigation links */
 .navbar a {
   color: white;
   margin: 0 10px;
@@ -36,7 +33,6 @@ body {
   text-decoration: underline;
 }
 
-/* 🔹 Search input and button */
 .search input {
   padding: 0.4rem;
   border-radius: 4px;
@@ -53,7 +49,6 @@ body {
   border-radius: 4px;
 }
 
-/* 🔹 Page container */
 .scroll-container {
   background-color: white;
   padding: 2rem;
@@ -63,7 +58,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* 🔹 Tool cards row */
 .tool-row {
   display: flex;
   justify-content: space-between;
@@ -71,7 +65,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* 🔹 Individual tool card */
 .tool-card {
   flex: 0 0 30%;
   background-color: #f8f9fb;
@@ -88,7 +81,6 @@ body {
   transform: scale(1.05);
 }
 
-/* 🔹 Add tool button */
 .add-button {
   margin-top: 2rem;
   text-align: center;
@@ -109,7 +101,6 @@ body {
   background-color: #005fa3;
 }
 
-/* 🔹 Forms (Contact + Submit) */
 form input,
 form textarea,
 form select {
@@ -130,7 +121,6 @@ form button {
   cursor: pointer;
 }
 
-/* 🔹 Responsive layout */
 @media screen and (max-width: 768px) {
   .topbar {
     flex-direction: column;
