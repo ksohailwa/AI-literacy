@@ -56,6 +56,7 @@ const userUploadSchema = new mongoose.Schema({
 
 
 // Modell definieren -> stellt eine Blaupause zu Verfügung 
+// nimmt den Namen der Collection und das vordefinierte Schema entgegen
 const uploadModel = mongoose.model('userUploads' , userUploadSchema);
 
 // Funktion mit Parameterübergabe -> für EventListener!
