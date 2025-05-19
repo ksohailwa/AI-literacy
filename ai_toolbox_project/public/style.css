@@ -135,3 +135,34 @@ form button {
     margin-top: 1rem;
   }
 }
+/* Submission Form Styling */
+.submission-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.submission-form input,
+.submission-form select,
+.submission-form textarea {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #555;
+  background-color: #2d2f31;
+  color: #f1f1f1;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.submission-form label {
+  font-weight: 600;
+  color: #f07f0e;
+}
+
+.center-button {
+  text-align: center;
+  margin-top: 1rem;
+}
