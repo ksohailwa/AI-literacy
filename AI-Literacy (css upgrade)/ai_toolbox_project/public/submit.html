@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Submit Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submit Tool - AI Toolbox</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 🔹 Header -->
-  <header class="topbar">
-    <img src="assets/logo.png" alt="Logo" class="logo-img" />
+
+<header class="topbar">
+  <div class="header-inner">
     <nav class="navbar">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -17,40 +18,54 @@
       <a href="ai_literacy.html">AI Literacy</a>
       <a href="tools.html">All Tools</a>
     </nav>
-    <div class="search">
-      <input type="text" id="searchInput" placeholder="Search..." />
-      <button onclick="search()">🔍</button>
+    <div class="header-right">
+      <div class="search">
+        <input type="text" id="searchInput" placeholder="Search..." />
+        <button onclick="search()">🔍</button>
+      </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- 🔹 Submission Form -->
-  <main class="scroll-container">
-    <h1>Submit Your Tool</h1>
-    <form>
-      <label for="title">Tool Title*</label>
-      <input type="text" id="title" required />
+<main class="scroll-container">
+  <h1>Submit Your Tool</h1>
+  <form>
+    <label for="title">Tool Title*</label>
+    <input type="text" id="title" name="title" placeholder="Enter tool name" required />
 
-      <label for="description">Description*</label>
-      <textarea id="description" rows="4" required></textarea>
+    <label for="email">Contact Email*</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required />
 
-      <label for="email">Contact Email*</label>
-      <input type="email" id="email" required />
+    <label for="type">Type*</label>
+    <select id="type" name="type" required>
+      <option value="" disabled selected>Choose one</option>
+      <option value="game">Game</option>
+      <option value="education">Education</option>
+      <option value="other">Other</option>
+    </select>
 
-      <label for="type">Type*</label>
-      <select id="type" required>
-        <option value="">Choose one</option>
-        <option value="game">Game</option>
-        <option value="education">Education</option>
-        <option value="other">Other</option>
-      </select>
+    <label for="github">GitHub Link*</label>
+    <input type="url" id="github" name="github" placeholder="https://github.com/..." required />
 
-      <label for="github">GitHub Link*</label>
-      <input type="url" id="github" required />
+    <label for="description">Description*</label>
+    <textarea id="description" name="description" rows="4" placeholder="Brief description..." required></textarea>
 
-      <button type="submit">Submit</button>
-    </form>
-  </main>
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
+</main>
 
-  <script src="script.js"></script>
+<a href="index.html">
+  <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
+</a>
+
+<script>
+  function search() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query) {
+      alert(`Searching for: ${query}`);
+    }
+  }
+</script>
+
 </body>
 </html>
