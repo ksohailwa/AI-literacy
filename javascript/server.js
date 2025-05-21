@@ -35,11 +35,11 @@ const Tip = mongoose.model('Tip', tipSchema);     // Modell erstellen
 // === Schritt 3: GET-Route mit Mongoose nutzen ===
 app.get('/get-data', async (req, res) => {
   try {
-    const data = await Tip.find();                  // Alle Einträge abrufen
+    const data = await Tip.find();
     console.log('Server liefert:', data);
-    res.json(data);                                  // JSON-Antwort senden
+    res.json(data);
   } catch (error) {
-    console.error('Fehler in GET /get-data:', error);
+    console.error('❌ Fehler in GET /get-data:', error);
     res.status(500).json({ message: 'Serverfehler beim Lesen' });
   }
 });
