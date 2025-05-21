@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Manager</title>
+    <link rel="stylesheet" href="../style/index.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="input-container">
+            <div>
+                <input type="number" id="tip" placeholder="Tip">
+            </div>
+            <div>
+                <input type="number" id="customers" placeholder="#Customers">
+            </div>
+            <div>
+                <input type="text" id="place" placeholder="Place">
+            </div>
+            <div>
+                <input type="text" id="type" placeholder="Type">
+            </div>
+        </div>
+        <div class="buttons-container">
+            <button class="confirm-button">Confirm</button>
+            <button class="show-button" id="show-button">Show Data</button>
+        </div>
+
+        <div class="data">
+            <div class="latest-Data">
+                <div id="latest-tip" class="latest-tip">Latest Tip : </div>
+                <div id="latest-customers" class="latest-customers">Latest #Customers : </div>
+                <div id="latest-place" class="latest-place">Latest Place : </div>
+                <div id="latest-type" class="latest-type">Latest Type : </div>
+            </div>   
+            <div class="present-data">
+                <div class="total-tips">Gesamt-Trinkgeld :</div>
+                <div class="total-trips">Gesamt-Schichten :</div>
+                <div class="avarage-tips">Durchschnitt-Tip :</div>
+                <div class="per-head">Pro-Kopf-Tip :</div>
+            </div>
+        </div>
+            
+
+    </div>
+    
+    <script type="module" src="../javascript/events.js"></script>
+    <script type="module" src="../javascript/index.js"></script>
+</body>
+</html>

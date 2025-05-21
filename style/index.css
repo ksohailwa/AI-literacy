@@ -1,0 +1,123 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input {
+    padding: 5px;
+    border-radius: 5px;
+}
+.input-container {
+    background-image: url('../tools/ClockBackGround.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+    justify-content: space-between;
+    border: 1px none black;
+    height: 400px;
+    width: 850px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.confirm-button {
+    padding:15px;
+    font-weight: bold;
+    color:white;
+    background-color: red;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px black;
+    transition: all 0.3 ease;
+}
+.confirm-button:hover {
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+    box-shadow: 5px 5px 0px red;
+}
+.confirm-button:active {
+    background-color: yellow;
+    box-shadow: none;
+    transform : translateY(4px);
+}
+.show-button {
+    padding:15px;
+    font-weight: bold;
+    color:white;
+    background-color: rgb(26, 240, 11);
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px black;
+    transition: all 0.3 ease;
+}
+.show-button:hover {
+    background-color: white;
+    color: rgb(26, 240, 11);
+    border: 2px solid rgb(26, 240, 11);
+    box-shadow: 5px 5px 0px rgb(26, 240, 11);
+}
+.show-button:active {
+    background-color: yellow;
+    box-shadow: none;
+    transform : translateY(4px);
+}
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 300px;
+}
+.present-data {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    margin-top: 35px;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 0px black;
+}
+.present-data div {
+    flex: 1 1 50%;
+}
+.latest-Data {
+    display:  flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    margin-top: 35px;
+    border : 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 2px 2px 0px black;
+    padding : 15px;
+}
+.latest-Data div {
+    flex: 1 1 50%;
+}
+.data {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    column-gap: 33px;
+}
+.data div {
+    flex : 1 1 50%;
+}
