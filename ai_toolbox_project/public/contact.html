@@ -7,39 +7,60 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 🔹 Header -->
-  <header class="topbar">
-    <img src="assets/logo.png" alt="Logo" class="logo-img" />
+
+<header class="topbar">
+  <div class="header-inner">
     <nav class="navbar">
-      <a href="index.html">Home</a>
+      <a href="index.html" >Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="ai_literacy.html">AI Literacy</a>
       <a href="tools.html">All Tools</a>
     </nav>
-    <div class="search">
-      <input type="text" id="searchInput" placeholder="Search..." />
-      <button onclick="search()">🔍</button>
+    <div class="header-right">
+      <div class="search">
+        <input type="text" id="searchInput" placeholder="Search..." />
+        <button onclick="search()">🔍</button>
+      </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- 🔹 Contact Form -->
-  <main class="scroll-container">
-    <h1>Contact Us</h1>
-    <form>
-      <label for="name">Name*</label>
-      <input type="text" id="name" required />
 
-      <label for="email">Email*</label>
-      <input type="email" id="email" required />
+<main class="scroll-container">
+  <h1>Contact Us</h1>
+  <form>
+    <label for="name">Name*</label>
+    <input type="text" id="name" required />
 
-      <label for="message">Message*</label>
-      <textarea id="message" rows="5" required></textarea>
+    <label for="email">Email*</label>
+    <input type="email" id="email" required />
 
-      <button type="submit">Send Message</button>
-    </form>
-  </main>
+    <label for="message">Message*</label>
+    <textarea id="message" rows="5" required></textarea>
 
-  <script src="script.js"></script>
+    <button type="submit" class="submit-button">Send Message</button>
+  </form>
+</main>
+
+<section class="scroll-container">
+  <h2>Frequently Asked Questions (FAQ)</h2>
+
+  <h3>Is access to this platform free of charge?</h3>
+  <p>Yes, the entire platform and all AI literacy tools are completely free to use. There are no subscription fees or hidden costs, making AI education accessible to everyone.</p>
+
+  <h3>What skills does this website help develop?</h3>
+  <p>Our toolbox offers interactive games and tools to train skills such as pattern recognition, understanding bias in AI systems, and exploring ethical questions related to AI.</p>
+
+  <h3>How can I contribute my own tools or games?</h3>
+  <p>You can submit new tools or games using the "Submit Tool" form. Just provide the title, your contact email, type, GitHub link, and a description.</p>
+
+  <h3>What should I do if I experience technical issues?</h3>
+  <p>If you encounter any technical problems while using the website or tools, please try the following steps first: refresh the page, clear your browser cache, or try using a different browser. If the issue persists, contact us via the contact form on the "Contact" page with a detailed description of the problem, and we will assist you as soon as possible.</p>
+
+  <h3>How is my data protected on this website?</h3>
+  <p>We take your privacy seriously. Any personal information you provide through forms (like contact or submission forms) is securely transmitted and stored. We do not share your data with third parties without your consent. Our site follows standard security practices to protect your information. </p>
+</section>
+<script src="script.js"></script>
 </body>
 </html>
