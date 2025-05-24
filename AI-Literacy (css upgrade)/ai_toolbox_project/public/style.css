@@ -4,6 +4,7 @@ body {
   padding: 0;
   background-color: #1e1f21;
   color: #f1f1f1;
+
 }
 
 .topbar {
@@ -118,6 +119,17 @@ body {
   max-width: 1200px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  text-align: none;
+}
+
+.scroll-container a {
+  color: orange;
+  text-decoration: none; 
+}
+
+.scroll-container a:hover {
+  color: darkorange;
+  text-decoration: underline;
 }
 
 .toolbox {
@@ -282,7 +294,7 @@ body {
 }
 
 .button-style:hover {
-  background-color: #f07f0e;
+  background-color: transparent;
   color: #000;
   box-shadow: 0 2px 8px rgba(240, 127, 14, 0.5);
 }
@@ -324,6 +336,17 @@ main.scroll-container h1 {
   font-size: 2.2rem;
 }
 
+.scroll-container h2 {
+  color: darkorange;
+  text-align: center;
+  font-size: 2 rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.scroll-container h3 {
+  color: darkorange;
+}
 
 form {
   max-width: 600px;
@@ -373,25 +396,28 @@ textarea {
   min-height: 100px;
 }
 
-.submit-button {
-  align-self: center;
-  padding: 0.6rem 2.5rem;
+
+.submit-button{
+  color: darkorange;
+  background-color: transparent;
+  border: 1px solid #f07f0e;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  text-decoration:none;
+  font-weight: 600;
   border-radius: 20px;
-  background-color: #f07f0e;
-  color: #000;
-  font-weight: 700;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(240, 127, 14, 0.6);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 0 5px rgba(240, 127, 14, 0.2);
 }
 
 .submit-button:hover {
-  background-color: #d26b01;
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(210, 107, 1, 0.8);
+  background-color: transparent;
+  color: darkorange;
+  text-decoration: underline;
+  box-shadow: 0 2px 8px rgba(240, 127, 14, 0.5);
 }
+
 
 @media screen and (max-width: 768px) {
   .topbar {
