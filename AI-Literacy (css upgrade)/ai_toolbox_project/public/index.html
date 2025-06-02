@@ -79,26 +79,7 @@
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
 
-<script>
-  function search() {
-    const query = document.getElementById('searchInput').value.trim();
-    if (query) {
-      alert('Search for: ' + query);
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const currentPath = window.location.pathname.split("/").pop();
-    const navLinks = document.querySelectorAll(".navbar a");
-
-    navLinks.forEach(link => {
-      if (link.getAttribute("href") === currentPath) {
-        link.classList.add("active");
-      } else {
-        link.classList.remove("active");
-      }
-    });
-  });
-</script>
+<script src="searchData.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

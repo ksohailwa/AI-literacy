@@ -3,17 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Submit Tool - AI Toolbox</title>
+  <title>All AI Literacy Tools</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    main.scroll-container p.intro-text {
+      text-align: center;
+      color: #ffffff;
+      font-weight: 500;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+  </style>
 </head>
 <body>
 
 <header class="topbar">
   <div class="header-inner">
-    <img src="assets/logo.png" alt="Logo" class="logo-img" />
     <nav class="navbar">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="ai_literacy.html">AI Literacy</a>
@@ -29,44 +38,40 @@
 </header>
 
 <main class="scroll-container">
-  <h1>Submit Your Tool</h1>
-  <form>
-    <label for="title">Tool Title*</label>
-    <input type="text" id="title" name="title" placeholder="Enter tool name" required />
+  <h1>All AI Literacy Tools</h1>
+  <p class="intro-text">Browse our curated AI literacy tools to enhance your skills and knowledge in artificial intelligence.</p>
 
-    <label for="email">Contact Email*</label>
-    <input type="email" id="email" name="email" placeholder="you@example.com" required />
+  <div class="tools-section">
+    <div class="tool-row" id="toolsContainer">
+      <a href="https://murdermysterai.itch.io/deathdetectives" target="_blank" class="tool-card tool-link" >
+        <h3>Mystery Cat</h3>
+        <img src="assets/MurderMystery.png" alt="Mystery Cat" />
+        <p>Learn about pattern recognition through an interactive game.</p>
+      </a>
+      <div class="tool-card">
+        <h3>Quizzer AI</h3>
+        <img src="assets/Quiz.png" alt="Quizzer AI" />
+        <p>Test your knowledge about AI with our quiz.</p>
+      </div>
+      <div class="tool-card">
+        <h3>Think Link AI Memory</h3>
+        <img src="assets/Memory.png" alt="Think Link AI Memory" />
+        <p>Can you find the matching pAIrs.</p>
+      </div>
+    </div>
+  </div>
 
-    <label for="type">Type*</label>
-    <select id="type" name="type" required>
-      <option value="" disabled selected>Choose one</option>
-      <option value="game">Game</option>
-      <option value="education">Education</option>
-      <option value="other">Other</option>
-    </select>
-
-    <label for="github">GitHub Link*</label>
-    <input type="url" id="github" name="github" placeholder="https://github.com/..." required />
-
-    <label for="description">Description*</label>
-    <textarea id="description" name="description" rows="4" placeholder="Brief description..." required></textarea>
-
-    <button type="submit" class="submit-button">Submit</button>
-  </form>
+  <div class="add-button">
+    <a href="submit.html" class="button-style">+ Add Tool</a>
+  </div>
 </main>
 
 <a href="index.html">
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
 
-<script>
-  function search() {
-    const query = document.getElementById('searchInput').value.trim();
-    if (query) {
-      alert(`Searching for: ${query}`);
-    }
-  }
-</script>
+<script src="searchData.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
