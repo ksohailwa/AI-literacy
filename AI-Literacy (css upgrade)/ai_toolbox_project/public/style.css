@@ -28,7 +28,6 @@ body {
   width: auto;
 }
 
-
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -40,7 +39,6 @@ body {
   gap: 1rem;
 }
 
-
 .navbar {
   display: flex;
   gap: 0.6rem;
@@ -50,7 +48,6 @@ body {
   overflow-x: auto;
   white-space: nowrap;
 }
-
 
 .navbar a {
   color: #ffffff;
@@ -95,6 +92,15 @@ body {
   border: 1px solid #666;
   background-color: #2d2f31;
   color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search input:focus {
+  outline: none;
+  border-color: #f07f0e;
+  box-shadow: 0 0 8px rgba(240, 127, 14, 0.6);
+  background-color: #393b40;
 }
 
 .search button {
@@ -118,17 +124,6 @@ body {
   max-width: 1200px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-  text-align: none;
-}
-
-.scroll-container a {
-  color: orange;
-  text-decoration: none; 
-}
-
-.scroll-container a:hover {
-  color: darkorange;
-  text-decoration: underline;
 }
 
 .toolbox {
@@ -143,35 +138,19 @@ body {
   text-shadow: 0 0 5px rgba(127, 118, 109, 0.4);
 }
 
-.tool-card h3::after {
-  content: "";
-  display: block;
-  margin: 0.5rem auto;
-  width: 40%;
-  height: 2px;
-  background: #f07f0e;
-}
-
-.tool-card img {
-  max-width: 100%;
-  max-height: 140px;
-  object-fit: contain;
-  border-radius: 8px;
-  margin: 1rem 0;
-}
-
 .quote-section {
-  background-color: #2b2d30;
-  padding: 3rem 2rem;
-  border-radius: 12px;
+  background: linear-gradient(145deg, #2f3136, #25272a);
+  border: 1px solid #444;
+  padding: 3rem;
+  border-radius: 16px;
   margin-bottom: 5rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .quote-content {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .logo-quote {
@@ -189,67 +168,29 @@ body {
   display: block;
 }
 
-.quote-section > div {
-  flex-grow: 1;
-  min-width: 0;
-}
-
-.quote-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.quote-box {
-  background: linear-gradient(145deg, #2f3136, #25272a);
-  border: 1px solid #444;
-  padding: 2rem 2rem 2rem 3.2rem;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+.quote-text-container {
   font-style: italic;
   color: #e0e0e0;
   line-height: 1.7;
-  position: relative;
   font-size: 1.2rem;
   max-width: 800px;
-  margin: 0 auto;
   width: 100%;
   text-indent: 1rem;
 }
 
-.quote-box.large {
-  font-size: 1.4rem;
-  font-weight: 400;
-}
-
-.quote-box .quote-symbol {
-  color: #f07f0e;
+.toolbox-title {
   font-size: 1.6rem;
+  font-weight: 600;
   font-style: normal;
-  margin: 0 0.3rem;
-}
-
-.quote-symbol:last-of-type {
-  margin-left: 0.4rem;
-}
-
-.quote-box cite {
-  display: block;
-  margin-top: 1.8rem;
-  padding-right: 1.5rem;
-  font-style: normal;
-  font-weight: bold;
   color: #f07f0e;
-  text-align: right;
-  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .tools-section {
-  background: linear-gradient(145deg, #2c2e33, #1f2022);
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
   padding: 3rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .tool-row {
@@ -278,6 +219,23 @@ body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
+.tool-card h3::after {
+  content: "";
+  display: block;
+  margin: 0.5rem auto;
+  width: 40%;
+  height: 2px;
+  background: #f07f0e;
+}
+
+.tool-card img {
+  max-width: 100%;
+  max-height: 140px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
 .button-style {
   color: #ffffff;
   background-color: transparent;
@@ -293,7 +251,7 @@ body {
 }
 
 .button-style:hover {
-  background-color: transparent;
+  background-color: #f07f0e;
   color: #000;
   box-shadow: 0 2px 8px rgba(240, 127, 14, 0.5);
 }
@@ -325,7 +283,6 @@ body {
   user-select: none;
 }
 
-
 main.scroll-container h1 {
   color: #f07f0e;
   text-align: center;
@@ -333,18 +290,6 @@ main.scroll-container h1 {
   text-shadow: 0 0 5px rgba(240, 127, 14, 0.5);
   font-weight: 700;
   font-size: 2.2rem;
-}
-
-.scroll-container h2 {
-  color: darkorange;
-  text-align: center;
-  font-size: 2 rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-}
-
-.scroll-container h3 {
-  color: darkorange;
 }
 
 form {
@@ -395,39 +340,35 @@ textarea {
   min-height: 100px;
 }
 
-
-.submit-button{
-  color: darkorange;
+.submit-button {
+  color: #ffffff;
   background-color: transparent;
   border: 1px solid #f07f0e;
   font-size: 0.9rem;
   padding: 0.4rem 1rem;
-  text-decoration:none;
+  text-decoration: none;
   font-weight: 600;
   border-radius: 20px;
   transition: all 0.3s ease;
   display: inline-block;
   box-shadow: 0 0 5px rgba(240, 127, 14, 0.2);
+  cursor: pointer;
+  margin: 2rem auto 0 auto;
+  width: auto;
+  max-width: fit-content;
+  text-align: center;
 }
 
 .submit-button:hover {
-  background-color: transparent;
-  color: darkorange;
-  text-decoration: underline;
+  background-color: #f07f0e;
+  color: #000;
   box-shadow: 0 2px 8px rgba(240, 127, 14, 0.5);
 }
-
 
 @media screen and (max-width: 768px) {
   .topbar {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .header-center {
-    width: 100%;
-    justify-content: flex-start;
-    margin-top: 0.5rem;
   }
 
   .navbar {
@@ -450,11 +391,6 @@ textarea {
     flex: 0 0 100%;
   }
 
-  .quote-box {
-    padding: 1.5rem;
-    font-size: 1.1rem;
-  }
-
   .quote-content {
     flex-direction: column;
     align-items: flex-start;
@@ -464,10 +400,4 @@ textarea {
     width: 100px;
     margin-bottom: 1rem;
   }
-}
-
-.quote-content {
-  display: flex;
-  align-items: center;
-  gap: 20px;
 }
