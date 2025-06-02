@@ -6,39 +6,11 @@
   <title>AI Toolbox - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    
-    .quote-section {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 1rem 0;
-    }
-
-    .logo-quote {
-      width: 120px;  
-      height: auto;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .logo-bottom-right {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 40px;
-      height: auto;
-      cursor: pointer;
-      user-select: none;
-      z-index: 1000;
-    }
-  </style>
 </head>
 <body>
 
 <header class="topbar">
   <div class="header-inner">
-    <img src="assets/logo.png" alt="Logo" class="logo-img" />
     <nav class="navbar">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -46,7 +18,6 @@
       <a href="ai_literacy.html">AI Literacy</a>
       <a href="tools.html">All Tools</a>
     </nav>
-
     <div class="header-right">
       <div class="search">
         <input type="text" id="searchInput" placeholder="Search..." />
@@ -57,28 +28,29 @@
 </header>
 
 <main class="scroll-container">
+
   <section class="toolbox quote-section">
     <div class="quote-content">
       <a href="index.html">
         <img src="assets/logo.png" alt="Logo" class="logo-quote" />
       </a>
-      <div>
+      <div class="quote-text-container">
         <div class="toolbox-title">What is AI Literacy?</div>
-        <div class="quote-wrapper">
-          <div class="quote-box large">
-            <span class="quote-symbol">❝</span>
-            AI Literacy is a set of competencies that empower individuals to critically evaluate AI technologies, communicate and collaborate effectively with AI, and leverage AI as a tool online, at home, and in the workplace.
-            <span class="quote-symbol">❞</span>
-            <cite>— Long & Magerko, 2020</cite>
-          </div>
-        </div>
+        <p>
+          ❝ AI Literacy is a set of competencies that empower individuals to critically evaluate AI technologies, communicate and collaborate effectively with AI, and leverage AI as a tool online, at home, and in the workplace. ❞
+        </p>
+        <cite>— Long &amp; Magerko, 2020</cite>
+        <p style="margin-top: 0.1rem; font-size: 0.9rem; color: #f07f0e; text-align: right;">
+          <a href="https://dl.acm.org/doi/10.1145/3313831.3376727" target="_blank" rel="noopener noreferrer" style="color: #f07f0e; text-decoration: underline;">
+            ACM Digital Library
+          </a>
+        </p>
       </div>
     </div>
   </section>
 
-
   <section class="toolbox tools-section">
-    <div class="toolbox-title">Tools for AI Literacy</div>
+    <div class="toolbox-title">Our Top 3 Tools for AI Literacy</div>
     <div class="tool-row">
       <a href="https://murdermysterai.itch.io/deathdetectives" target="_blank" class="tool-card tool-link">
         <h3>Mystery Cat</h3>
@@ -87,13 +59,13 @@
       </a>
       <div class="tool-card">
         <h3>Quizzer AI</h3>
-        <img src="assets/Quiz.png" alt="Bias Buster" />
+        <img src="assets/Quiz.png" alt="Quizzer AI" />
         <p>Test your knowledge about AI with our quiz.</p>
       </div>
       <div class="tool-card">
         <h3>Think Link AI Memory</h3>
-        <img src="assets/Memory.png" alt="Ethics Explorer" />
-        <p>Can you find the matching pAIrs .</p>
+        <img src="assets/Memory.png" alt="Think Link AI Memory" />
+        <p>Can you find the matching pAIrs.</p>
       </div>
     </div>
   </section>
@@ -107,6 +79,26 @@
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
 
-<script src="script.js"></script>
+<script>
+  function search() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query) {
+      alert('Search for: ' + query);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
 </body>
 </html>
