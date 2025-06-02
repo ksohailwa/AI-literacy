@@ -296,8 +296,8 @@
           <div class="flip-card-front">Conceptual Knowledge</div>
           <div class="flip-card-back">
             <ul>
-              <li>What AI is and isn't.</li>
-              <li>AI's capabilities and limits.</li>
+              <li>What AI is and isn’t.</li>
+              <li>AI’s capabilities and limits.</li>
               <li>Basics of ML and algorithms.</li>
               <li>Ethical concerns like bias.</li>
             </ul>
@@ -338,7 +338,7 @@
           <div class="flip-card-back">
             <ul>
               <li>Basic AI concepts knowledge.</li>
-              <li>Awareness of AI's strengths and limits.</li>
+              <li>Awareness of AI’s strengths and limits.</li>
             </ul>
           </div>
         </div>
@@ -406,8 +406,36 @@
 <a href="index.html">
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
+
+<script>
+  
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
 <script src="searchData.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
