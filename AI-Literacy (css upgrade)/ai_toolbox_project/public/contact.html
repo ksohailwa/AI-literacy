@@ -5,16 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #444;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #f07f0e;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-align: left;
+      padding: 0.75rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      border-radius: 6px;
+    }
+
+    .faq-question:hover,
+    .faq-question[aria-expanded="true"] {
+      color: #ffa726;
+      background-color: rgba(240, 127, 14, 0.1);
+    }
+
+  
+    .faq-question::after {
+      content: "▸";
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+      transform-origin: center;
+      color: #f07f0e;
+      margin-left: 0.5rem;
+    }
+
+    .faq-question[aria-expanded="true"]::after {
+      transform: rotate(90deg);
+      color: #ffa726;
+    }
+
+  
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      color: #ccc;
+      font-size: 1rem;
+      line-height: 1.4;
+      padding-left: 1rem;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-answer.open {
+      max-height: 500px; 
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+  </style>
 </head>
 <body>
 
 <header class="topbar">
   <div class="header-inner">
-    <img src="assets/logo.png" alt="Logo" class="logo-img" />
     <nav class="navbar">
-      <a href="index.html" >Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="active">Contact</a>
       <a href="ai_literacy.html">AI Literacy</a>
       <a href="tools.html">All Tools</a>
     </nav>
@@ -26,7 +86,6 @@
     </div>
   </div>
 </header>
-
 
 <main class="scroll-container">
   <h1>Contact Us</h1>
@@ -44,27 +103,135 @@
   </form>
 </main>
 
-<section class="scroll-container">
+<section class="scroll-container faq-section">
   <h2>Frequently Asked Questions (FAQ)</h2>
 
-  <h3>Is access to this platform free of charge?</h3>
-  <p>Yes, the entire platform and all AI literacy tools are completely free to use. There are no subscription fees or hidden costs, making AI education accessible to everyone.</p>
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      What is the goal of the AI Literacy Toolbox?
+    </button>
+    <div class="faq-answer">
+      <p>The toolbox aims to empower users with knowledge and practical skills to understand and critically engage with AI technologies.</p>
+    </div>
+  </div>
 
-  <h3>What skills does this website help develop?</h3>
-  <p>Our toolbox offers interactive games and tools to train skills such as pattern recognition, understanding bias in AI systems, and exploring ethical questions related to AI.</p>
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      Who can benefit from these AI literacy tools?
+    </button>
+    <div class="faq-answer">
+      <p>Students, educators, professionals, and anyone interested in learning about AI can benefit from these interactive tools.</p>
+    </div>
+  </div>
 
-  <h3>How can I contribute my own tools or games?</h3>
-  <p>You can submit new tools or games using the "Submit Tool" form. Just provide the title, your contact email, type, GitHub link, and a description.</p>
+  <div class="faq-item">
+   <button class="faq-question" aria-expanded="false">
+      How do I submit my own AI tool or game?
+   </button>
+   <div class="faq-answer">
+      <p>
+       You can submit new tools or games through the 
+        <a href="submit.html">Submit Tool</a> page by providing the required information such as title, contact email, type, GitHub link, and description.
+      </p>
+    </div>
+  </div>
 
-  <h3>What should I do if I experience technical issues?</h3>
-  <p>If you encounter any technical problems while using the website or tools, please try the following steps first: refresh the page, clear your browser cache, or try using a different browser. If the issue persists, contact us via the contact form on the "Contact" page with a detailed description of the problem, and we will assist you as soon as possible.</p>
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      Are the tools suitable for beginners in AI?
+    </button>
+    <div class="faq-answer">
+      <p>Yes, many tools are designed to be beginner-friendly, helping users build foundational knowledge and skills in AI.</p>
+    </div>
+  </div>
 
-  <h3>How is my data protected on this website?</h3>
-  <p>We take your privacy seriously. Any personal information you provide through forms (like contact or submission forms) is securely transmitted and stored. We do not share your data with third parties without your consent. Our site follows standard security practices to protect your information. </p>
-</section>
-<a href="index.html">
+  <div class="faq-item">
+  <button class="faq-question" aria-expanded="false">
+    What should I do if a tool is not working correctly?
+  </button>
+  <div class="faq-answer">
+    <p>
+      If you experience issues, try refreshing the page, clearing your browser cache, or using a different browser. If problems persist, please 
+      <a href="contact.html">contact us via the form</a> with a detailed description.
+    </p>
+  </div>
+</div>
+
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      Can I use these tools for classroom teaching or workshops?
+    </button>
+    <div class="faq-answer">
+      <p>Absolutely! Our tools are designed to support education and can be used in classrooms, workshops, and self-study settings.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false">
+      How often do you add new tools or update existing ones?
+    </button>
+    <div class="faq-answer">
+      <p>We regularly review submissions and update the toolbox to include new and improved tools to keep the learning experience fresh and relevant.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+  <button class="faq-question" aria-expanded="false">
+    Is there a way to request a specific AI literacy topic or tool?
+  </button>
+  <div class="faq-answer">
+    <p>
+      Yes, you can contact us through the 
+      <a href="contact.html">contact form</a> and suggest topics or tools you'd like to see added to the toolbox.
+    </p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <button class="faq-question" aria-expanded="false">
+    Can I contribute translations or improvements to existing tools?
+  </button>
+  <div class="faq-answer">
+    <p>
+      We welcome contributions! Please get in touch with us via the 
+      <a href="contact.html">contact page</a> to discuss how you can help improve or translate the tools.
+    </p>
+  </div>
+
+<a href="contact.html">
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
+
+
+<script>
+
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', !expanded);
+      const answer = button.nextElementSibling;
+      if (!expanded) {
+        answer.classList.add('open');
+      } else {
+        answer.classList.remove('open');
+      }
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
 <script src="searchData.js"></script>
 <script src="script.js"></script>
 </body>
