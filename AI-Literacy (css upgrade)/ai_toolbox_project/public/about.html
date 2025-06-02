@@ -3,254 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Literacy - AI Toolbox (Flip Cards)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <title>About the AI Literacy Toolbox</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      background-color: #1e1f21;
-      color: #e2e2e2;
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 2rem;
-      background-color: #0d0d0d;
-      color: #fff;
-      border-bottom: 2px solid #f07f0e;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      gap: 1rem;
-    }
-
-    .logo-img {
-      height: 48px;
-      width: auto;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: nowrap; 
-      gap: 1rem;
-    }
-
-    .navbar {
-      display: flex;
-      gap: 0.6rem;
-      justify-content: flex-start;
-      flex-grow: 1;
-      min-width: 0; 
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-
-    .navbar a {
-      color: #ffffff;
-      background-color: transparent;
-      border: 1px solid #f07f0e;
-      font-size: 0.9rem;
-      padding: 0.3rem 0.8rem;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .navbar a:hover,
-    .navbar a.active {
-      background-color: #f07f0e;
-      color: #000;
-      box-shadow: 0 2px 8px rgba(240, 127, 14, 0.5);
-    }
-
-    .header-right {
-      flex-shrink: 0;
-      min-width: 280px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    .search {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      width: 100%;
-      max-width: 280px;
-    }
-
-    .search input {
-      flex: 1;
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
-      border: 1px solid #666;
-      background-color: #2d2f31;
-      color: #fff;
-    }
-
-    .search button {
-      padding: 0.4rem 0.8rem;
-      background-color: #f07f0e;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    .search button:hover {
-      background-color: #d26b01;
-    }
-
-    .scroll-container {
+    main.scroll-container {
       background-color: #2c2e33;
       padding: 2rem;
-      margin: 100px auto 2rem;
       max-width: 1200px;
+      margin: 100px auto 2rem;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      color: #ddd;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      font-family: 'Inter', sans-serif;
     }
-
-    .page-title {
+    main h1 {
       color: #f07f0e;
-      font-size: 2.6rem;
       font-weight: 700;
+      font-size: 2.2rem;
       margin-bottom: 2rem;
       text-align: center;
-      text-shadow: 0 0 8px rgba(240, 127, 14, 0.6);
     }
-
-    .intro-text {
-      max-width: 700px;
-      margin: 0 auto 3rem;
-      font-size: 1.15rem;
-      line-height: 1.7;
-      color: #ccc;
-      text-align: center;
+    section {
+      margin-bottom: 2.5rem;
     }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
-      perspective: 1200px;
-    }
-
-    .flip-card {
-      background: transparent;
-      width: 100%;
-      height: 220px;
-      perspective: 1200px;
-      cursor: pointer;
-      outline: none;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
-      transform-style: preserve-3d;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-      border-radius: 12px;
-      background: linear-gradient(145deg, #2c2e33, #1f2022);
-      border: 1px solid #444;
+    section h2 {
       color: #f07f0e;
-      font-weight: 700;
-      font-size: 1.5rem;
-      user-select: none;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
     }
-
-    .flip-card:hover .flip-card-inner,
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-      box-shadow: 0 10px 30px rgba(240, 127, 14, 0.5);
-    }
-
-    .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1.5rem;
-      box-sizing: border-box;
-    }
-
-    .flip-card-front {
-      background: linear-gradient(145deg, #2c2e33, #1f2022);
-      color: #f07f0e;
-      text-align: center;
-    }
-
-  
-    .flip-card-back {
-      background: #1f2022;
+    section p, ul {
+      margin: 0 0 1rem 0;
       color: #ccc;
-      font-weight: 400;
-      font-size: 1rem;
-      overflow-y: auto;
-      transform: rotateY(180deg);
-      text-align: left;
     }
-
-    .flip-card-back ul {
-      padding-left: 1.3rem;
-      margin: 0;
-      list-style-type: disc;
+    ul {
+      list-style: disc inside;
+      padding-left: 0;
+      color: #f0a950;
     }
-    .flip-card-back ul li {
-      margin-bottom: 0.8rem;
-      line-height: 1.4;
+    ul li {
+      margin-bottom: 0.4rem;
     }
-
-    .flip-card-back::-webkit-scrollbar {
-      width: 8px;
-    }
-    .flip-card-back::-webkit-scrollbar-thumb {
-      background-color: #f07f0e;
+    .contact-section {
+      background-color: #393b40;
+      padding: 1.5rem 2rem;
       border-radius: 10px;
-    }
-
-    .reference {
       text-align: center;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #999;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      font-style: italic;
+      font-weight: 600;
+      color: #f07f0e;
     }
-
-    @media (max-width: 720px) {
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-      .flip-card {
-        height: 260px;
-      }
+    .contact-section a {
+      color: #f07f0e;
+      text-decoration: underline;
     }
-
+    .contact-section a:hover {
+      text-decoration: none;
+      color: #d26900;
+    }
     .logo-bottom-right {
       position: fixed;
       bottom: 20px;
@@ -261,15 +72,26 @@
       cursor: pointer;
       user-select: none;
     }
+    @media (max-width: 600px) {
+      main.scroll-container {
+        padding: 2rem 1.5rem 2rem;
+        font-size: 1rem;
+      }
+      main h1 {
+        font-size: 1.8rem;
+      }
+      section h2 {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
-
 <header class="topbar">
   <div class="header-inner">
     <nav class="navbar">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
+      <a href="about.html" class="active">About</a>
       <a href="contact.html">Contact</a>
       <a href="ai_literacy.html">AI Literacy</a>
       <a href="tools.html">All Tools</a>
@@ -283,131 +105,66 @@
   </div>
 </header>
 
-<main>
-  <div class="scroll-container">
-    <h1 class="page-title">AI Literacy Framework</h1>
-    <p class="intro-text">
-      The AI Literacy Framework by Long &amp; Magerko (2020) outlines the essential knowledge and skills required to understand, critically evaluate, and effectively use artificial intelligence in everyday life and work.
+<main class="scroll-container about-container">
+  <h1>About the AI Literacy Toolbox</h1>
+
+  <section>
+    <p>
+      Artificial Intelligence is becoming an essential part of our daily lives and workplaces.
+      This <strong>AI Literacy Toolbox</strong> was created to help close the knowledge gap, empowering people not just to use AI, but to understand and critically engage with it.
+    </p>
+    <p>
+      Our mission is to provide accessible and practical AI literacy for students, educators, and anyone curious.
+      The toolbox combines interactive learning modules with playful tools based on proven AI literacy frameworks.
+    </p>
+  </section>
+
+  <section>
+    <p>
+      Developed as a university project at the 
+      <em>University of Duisburg-Essen</em>, we researched frameworks, collected valuable tools, and built a platform for learning and collaboration.
     </p>
 
-    <div class="cards-grid" id="cardsGrid">
-      <div class="flip-card" tabindex="0">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Conceptual Knowledge</div>
-          <div class="flip-card-back">
-            <ul>
-              <li>What AI is and isn't.</li>
-              <li>AI's capabilities and limits.</li>
-              <li>Basics of ML and algorithms.</li>
-              <li>Ethical concerns like bias.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <h2>Our Team</h2>
+    <ul>
+      <li>Khan Sohail</li>
+      <li>Kevin Flotow</li>
+      <li>Mohammed Rezazahedi</li>
+      <li>Rabia Karabulut</li>
+      <li>Tharani Uruthirakumar</li>
+      <li>Gousiha Rammohan</li>
+    </ul>
 
-      <div class="flip-card" tabindex="0">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Practical Skills</div>
-          <div class="flip-card-back">
-            <ul>
-              <li>Using AI tools effectively.</li>
-              <li>Evaluating AI critically.</li>
-              <li>Communicating tasks clearly.</li>
-              <li>Creative AI usage.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <p><strong>Supervised by:</strong> <a href="https://iachounta.com/website/" target="_blank" rel="noopener noreferrer" style="color: #f07f0e; text-decoration: underline;">Prof. Dr. Irene-Angelica Chounta</a></p>
+  </section>
 
-      <div class="flip-card" tabindex="0">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Educational Goals</div>
-          <div class="flip-card-back">
-            <ul>
-              <li>Make informed decisions in AI contexts.</li>
-              <li>Participate in civic AI discussions.</li>
-              <li>Foster creative and active AI use.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" tabindex="0">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Technical Understanding</div>
-          <div class="flip-card-back">
-            <ul>
-              <li>Basic AI concepts knowledge.</li>
-              <li>Awareness of AI's strengths and limits.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" tabindex="0">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Critical Thinking</div>
-          <div class="flip-card-back">
-            <ul>
-              <li>Analyze AI outputs critically.</li>
-              <li>Spot bias, errors, and black-box issues.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" tabindex="0">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Ethical &amp; Societal Awareness</div>
-          <div class="flip-card-back">
-            <ul>
-              <li>Understand privacy and fairness.</li>
-              <li>Recognize surveillance and discrimination.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" tabindex="0">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Practical Application Skills</div>
-          <div class="flip-card-back">
-            <ul>
-              <li>Use AI tools appropriately.</li>
-              <li>Understand human-AI interaction.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" tabindex="0">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Communication &amp; Collaboration</div>
-          <div class="flip-card-back">
-            <ul>
-              <li>Discuss AI topics clearly and responsibly.</li>
-              <li>Engage in informed AI conversations.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <p class="reference">
-      Source: The original AI Literacy Framework paper by Long &amp; Magerko (2020).  
-      Read it here: 
-      <a href="https://dl.acm.org/doi/10.1145/3313831.3376727" target="_blank" rel="noopener noreferrer" style="color: #f07f0e; text-decoration: underline;">
-        ACM Digital Library
-      </a>
+  <section class="contact-section">
+    <p>
+      Questions, suggestions, or ideas to improve the AI Literacy Toolbox? <a href="contact.html">Contact us!</a> We’d love to hear from you.
     </p>
-  </div>
+  </section>
 </main>
 
-<a href="index.html">
+<a href="about.html">
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".navbar a");
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
+
 <script src="searchData.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
