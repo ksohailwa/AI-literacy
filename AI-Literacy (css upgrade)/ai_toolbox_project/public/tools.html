@@ -2,17 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Tools</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All AI Literacy Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    main.scroll-container p.intro-text {
+      text-align: center;
+      color: #ffffff;
+      font-weight: 500;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+  </style>
 </head>
 <body>
 
 <header class="topbar">
   <div class="header-inner">
-    <img src="assets/logo.png" alt="Logo" class="logo-img" />
     <nav class="navbar">
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="ai_literacy.html">AI Literacy</a>
@@ -27,33 +37,83 @@
   </div>
 </header>
 
- 
-  <main class="scroll-container">
-    <h1>All Tools</h1>
+<main class="scroll-container">
+  <h1>All AI Literacy Tools</h1>
+  <p class="intro-text">Browse our curated AI literacy tools to enhance your skills and knowledge in artificial intelligence.</p>
 
-    <section class="tool-row">
-      <div class="tool-card">
-        <h3>AI Music Mixer</h3>
-        <img src="assets/placeholder.jpg" alt="Tool 1" />
-        <p>Create music with AI patterns.</p>
-      </div>
-      <div class="tool-card">
+  <div class="tools-section">
+    <div class="tool-row" id="toolsContainer">
+      <a href="https://murdermysterai.itch.io/deathdetectives" target="_blank" class="tool-card tool-link" >
         <h3>Mystery Cat</h3>
-        <img src="assets/placeholder.jpg" alt="Tool 2" />
-        <p>Recognize and classify shapes.</p>
+        <img src="assets/MurderMystery.png" alt="Mystery Cat" />
+        <p>Learn about pattern recognition through an interactive game.</p>
+      </a>
+      <div class="tool-card">
+        <h3>Quizzer AI</h3>
+        <img src="assets/Quiz.png" alt="Quizzer AI" />
+        <p>Test your knowledge about AI with our quiz.</p>
       </div>
       <div class="tool-card">
-        <h3>Bias Breaker</h3>
-        <img src="assets/placeholder.jpg" alt="Tool 3" />
-        <p>Learn about bias in AI models.</p>
+        <h3>Think Link AI Memory</h3>
+        <img src="assets/Memory.png" alt="Think Link AI Memory" />
+        <p>Can you find the matching pAIrs.</p>
       </div>
-    </section>
-
-    <div class="add-button">
-      <a href="submit.html">+ Add Tool</a>
     </div>
-  </main>
+  </div>
 
-  <script src="script.js"></script>
+  <div class="add-button">
+    <a href="submit.html" class="button-style">+ Add Tool</a>
+  </div>
+</main>
+
+<a href="index.html">
+  <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
+</a>
+
+<script>
+  function search() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query) {
+      alert('Search for: ' + query);
+    }
+  }
+
+  function filterTools() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const tools = document.querySelectorAll('#toolsContainer .tool-card, #toolsContainer .tool-link');
+
+    tools.forEach(tool => {
+      const title = tool.querySelector('h3').textContent.toLowerCase();
+      const desc = tool.querySelector('p').textContent.toLowerCase();
+
+      if (title.includes(filter) || desc.includes(filter)) {
+        tool.style.display = '';
+      } else {
+        tool.style.display = 'none';
+      }
+    });
+  }
+  function search() {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query) {
+      alert('Search for: ' + query);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
