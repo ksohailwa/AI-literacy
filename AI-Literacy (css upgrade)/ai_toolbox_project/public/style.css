@@ -365,44 +365,17 @@ textarea {
   box-shadow: 0 2px 8px rgba(240, 127, 14, 0.5);
 }
 
-@media screen and (max-width: 768px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar {
-    justify-content: flex-start;
-    flex-wrap: wrap; 
-  }
-
-  .header-right {
-    width: 100%;
-    margin-top: 0.5rem;
-    min-width: auto;
-  }
-
-  .search {
-    width: 100%;
-    max-width: none;
-  }
-
-  .tool-card {
-    flex: 0 0 100%;
-  }
-
-  .quote-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .logo-quote {
-    width: 100px;
-    margin-bottom: 1rem;
-  }
+.faq-answer a {
+  color: #f07f0e;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-/* Search Results Styles */
+.faq-answer a:hover {
+  color: #ffa726;
+  text-decoration: underline;
+}
 .search-results {
     position: fixed;
     top: 80px;
@@ -489,4 +462,41 @@ mark {
 .close-results:hover {
     background: #f07f0e;
     color: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar {
+    justify-content: flex-start;
+    flex-wrap: wrap; 
+  }
+
+  .header-right {
+    width: 100%;
+    margin-top: 0.5rem;
+    min-width: auto;
+  }
+
+  .search {
+    width: 100%;
+    max-width: none;
+  }
+
+  .tool-card {
+    flex: 0 0 100%;
+  }
+
+  .quote-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo-quote {
+    width: 100px;
+    margin-bottom: 1rem;
+  }
 }
