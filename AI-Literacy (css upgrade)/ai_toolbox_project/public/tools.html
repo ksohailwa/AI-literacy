@@ -70,8 +70,40 @@
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
 
+<script>
+
+
+  function filterTools() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const tools = document.querySelectorAll('#toolsContainer .tool-card, #toolsContainer .tool-link');
+
+    tools.forEach(tool => {
+      const title = tool.querySelector('h3').textContent.toLowerCase();
+      const desc = tool.querySelector('p').textContent.toLowerCase();
+
+      if (title.includes(filter) || desc.includes(filter)) {
+        tool.style.display = '';
+      } else {
+        tool.style.display = 'none';
+      }
+    });
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
 <script src="searchData.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
