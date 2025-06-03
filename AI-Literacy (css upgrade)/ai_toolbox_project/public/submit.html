@@ -59,8 +59,6 @@
 </a>
 
 <script>
-
-
   function filterTools() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toLowerCase();
@@ -77,7 +75,7 @@
       }
     });
   }
-  
+
   document.addEventListener("DOMContentLoaded", () => {
     const currentPath = window.location.pathname.split("/").pop();
     const navLinks = document.querySelectorAll(".navbar a");
@@ -94,5 +92,6 @@
 
 <script src="searchData.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
