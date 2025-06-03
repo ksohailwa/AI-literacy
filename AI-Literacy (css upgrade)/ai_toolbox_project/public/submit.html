@@ -47,6 +47,21 @@
     <label for="github">GitHub Link*</label>
     <input type="url" id="github" name="github" placeholder="https://github.com/..." required />
 
+    <label for="thumbnailURL">Thumbnail URL</label>
+    <input type="url" id="thumbnailURL" name="thumbnailURL" placeholder="https://example.com/image.jpg" />
+
+    <label for="uploadTags">Tags (comma separated)</label>
+    <input type="text" id="uploadTags" name="uploadTags" placeholder="e.g. education, games, learning" />
+
+    <label for="ageRecommendation">Age Recommendation*</label>
+    <select id="ageRecommendation" name="ageRecommendation" required>
+      <option value="" disabled selected>Select age range</option>
+      <option value="all">All ages</option>
+      <option value="kids">Kids (5-12)</option>
+      <option value="teens">Teens (13-17)</option>
+      <option value="adults">Adults (18+)</option>
+    </select>
+
     <label for="description">Description*</label>
     <textarea id="description" name="description" rows="4" placeholder="Brief description..." required></textarea>
 
