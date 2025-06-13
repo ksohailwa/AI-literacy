@@ -28,6 +28,7 @@ function getThumbnail(){
     return thumb
 }
 
+// SUBMIT-BUTTON event
 const submitButton = document.getElementById("submit-button-js");
 submitButton.addEventListener("click" , async () => {
 
@@ -36,13 +37,16 @@ submitButton.addEventListener("click" , async () => {
     if(validEmail(uploaderEmail)){
 
     } else {
-        console.warning("Email validation was not succesfull.")
+        console.warn("Email validation was not succesfull.")
     }
     
     const types = ["game" , "education" , "other"];
     const uploadType = getType();
     if(types.includes(uploadType)){
-    } 
+      
+    } else {
+      console.warn("Wrong Input.")
+    }
     
     const uploadTitle = getTitle();
     
@@ -59,19 +63,19 @@ submitButton.addEventListener("click" , async () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                uploaderEmail ,   // done
-                uploadType ,      // done
-                uploadDate ,      // done
-                ageRecommendation ,  // done      
-                uploadTitle ,     // done
-                uploadDescription , // done
-                fileURL ,         // done
-                thumbnailURL ,   // done
-                uploadTags ,     // done
-                reviweStatus ,  // dont need
-                reviewNotes ,   // dont need
+                uploaderEmail ,   
+                uploadType ,      
+                uploadDate ,      
+                ageRecommendation ,       
+                uploadTitle ,     
+                uploadDescription , 
+                fileURL ,         
+                thumbnailURL ,   
+                uploadTags ,     
+                reviweStatus ,   
+                reviewNotes ,   
                 reviewedByAdmin ,  
-                rating  // dont need
+                rating  
             })
         });
 
