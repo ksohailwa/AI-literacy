@@ -3,6 +3,10 @@ const express = require('express');
 const cors = require('cors');
 // Nur Mongoose verwenden
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
+
+dotenv.config();  // .env-Datei einlesen (für EMAIL_USER usw.)
 
 const app = express();
 
@@ -16,9 +20,11 @@ mongoose.connect('mongodb://localhost:27017/myTips', {
 const port = 3000;
 
 // CORS-Middleware für alle Domains (Entwicklung)
-app.use(cors());
+app.use(cors());        // <- immer nach ganz oben in Middleware
 // JSON parsing middleware
 app.use(express.json());
+
+//------------------------------------Database-Schema section-------------------------------------------------------//
 
 // UnterSchema für ratings
   const ratingSchema = new mongoose.Schema({
@@ -79,6 +85,8 @@ app.get('/', (req, res) => {
   res.send('Server ist live!');
 });
 
+//------------------------------------Get-Data section-------------------------------------------------------//
+
 // der Server sendet Daten an den Clienten mit der GET Anfrage
 app.get('/get-data' , async (req , res) => {
 
@@ -93,6 +101,8 @@ app.get('/get-data' , async (req , res) => {
         });
     }
 });
+
+//------------------------------------Add-Entry section-------------------------------------------------------//
 
 // der Server erhält Daten vom Clienten mit der POST Anfrage
 app.post('/add-entry', async (req, res) => {
@@ -126,6 +136,51 @@ app.post('/add-entry', async (req, res) => {
         res.status(500).send('Interner Serverfehler.');
     }
 });
+
+//------------------------------------E-Mail section-------------------------------------------------------//
+
+// Email-Transporter konfigurieren – sagt, über welchen Maildienst versendet wird
+// env-Datei erstellen und in '.gitignore' packen wegen Enthalten von sensiblen Daten
+// process.env.bablabla -> gobales Objekt welches die privaten Werte aus der .env Date ausliest
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,      // host angeben  -> in .env
+  port : process.env.SMTP_PORT,     // port angeben  -> in .env
+  secure : false,                   // sicherere Verbindung durch STARTTLS
+  auth: {
+    user: process.env.EMAIL_USER, // Absenderadresse aus .env-Datei
+    pass: process.env.EMAIL_PASS  // Passwort ( am besten App Passwort )  aus .env-Datei
+  }
+});
+
+// POST-Route für den E-Mail-Versand
+app.post('/send-email', (req, res) => {
+  const { to } = req.body; // Zieladresse aus dem Request-Body holen
+
+  // Optionen für die zu versendende E-Mail
+  const mailOptions = {
+    from: process.env.EMAIL_USER,     // Absenderadresse
+    to: to,                           // Empfängeradresse
+    subject: 'Review',         // Betreffzeile
+    text: 'Your submission is under review , we will contact you when the review is done.' // Nachrichtentext
+  };
+
+  // E-Mail absenden
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      console.error('Fehler beim E-Mail-Versand:', err);
+      return res.status(500).send('E-Mail konnte nicht gesendet werden.');
+    }
+
+    console.log('E-Mail gesendet:', info.response);
+    res.send('E-Mail erfolgreich gesendet!');
+  });
+});
+
+// Server starten
+app.listen(port, () => {
+  console.log(`Server läuft auf http://localhost:${port}`);
+});
+
 
 
 app.listen(port, () => {
