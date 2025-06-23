@@ -1,4 +1,5 @@
-// getter for user input
+//------------------------------------------Getter-Function section----------------------------------------------//
+
 function validEmail(email){
   const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
   return regex.test(email);
@@ -32,6 +33,8 @@ function getThumbnail(){
 const submitButton = document.getElementById("submit-button-js");
 submitButton.addEventListener("click" , async () => {
 
+//------------------------------------------Get-Input section----------------------------------------------//
+  
     // additional validation of the userinput  
     const uploaderEmail = getEmail();
     if(validEmail(uploaderEmail)){
@@ -55,7 +58,8 @@ submitButton.addEventListener("click" , async () => {
     const fileURL = getLink();
     const uploadDescription = getDescription();
 
-    // add a new entry to the database
+    //------------------------------------------Add-Entry section----------------------------------------------//
+  
     try {
         const response = await fetch('http://localhost:3000/add-entry', {
             method: 'POST',
@@ -85,6 +89,38 @@ submitButton.addEventListener("click" , async () => {
         console.error('Fehler beim Senden:', error);
         alert('Fehler beim Speichern der Daten.');
     }
-})
 
-// Search functipn exporten.
+  //------------------------------------------E-Mail section----------------------------------------------//
+  
+  // E-Mail Adresse aus dem InputFeld holen
+  const email = getEmail();
+
+    // prüfen ob Input leer ist
+    if (!email) {
+      alert("Bitte gib eine E-Mail-Adresse ein.");
+      return;
+    }
+
+    try {
+      // Anfrage an den Server senden – POST an /send-email
+      const response = await fetch('http://localhost:3000/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'  // JSON wird geschickt
+        },
+        body: JSON.stringify({ to: email })  // { to: angegebene Email Adresse }
+      });
+
+      // Text-Antwort vom Server lesen
+      const result = await response.text();
+
+      // Feedback an den Benutzer anzeigen
+      alter(result);
+
+    } catch (error) {
+      // Falls z. B. keine Verbindung zum Server möglich ist
+      console.error('Fehler beim Senden:', error);
+      alert('Beim Senden ist ein Fehler aufgetreten.');
+    }
+  });
+})
