@@ -6,7 +6,14 @@
   <title>About the AI Literacy Toolbox</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    main.scroll-container {
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #1e1f23;
+      margin: 0;
+      padding: 0;
+    }
+
+    .scroll-container {
       background-color: #2c2e33;
       padding: 2rem;
       max-width: 1200px;
@@ -14,74 +21,140 @@
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
       color: #ddd;
-      font-size: 1.1rem;
-      line-height: 1.5;
-      font-family: 'Inter', sans-serif;
     }
-    main h1 {
+
+    h1 {
+      font-size: 2.5rem;
       color: #f07f0e;
-      font-weight: 700;
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .emoji-title {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro {
+      text-align: center;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-split {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .section-split > div {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .section-split h2 {
+      font-size: 1.4rem;
+      color: #f07f0e;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-split p {
+      color: #ccc;
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .team-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .team-section h2 {
+      font-size: 1.6rem;
+      color: #f07f0e;
+      margin-bottom: 1rem;
+    }
+
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .team-member {
+      background-color: #393b40;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      color: #f0a950;
+      font-weight: 500;
+      min-width: 150px;
       text-align: center;
     }
-    section {
-      margin-bottom: 2.5rem;
-    }
-    section h2 {
-      color: #f07f0e;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
-    section p, ul {
-      margin: 0 0 1rem 0;
+
+    .supervisor {
+      text-align: center;
+      margin-top: 1.5rem;
       color: #ccc;
     }
-    ul {
-      list-style: disc inside;
-      padding-left: 0;
-      color: #f0a950;
-    }
-    ul li {
-      margin-bottom: 0.4rem;
-    }
-    .contact-section {
-      background-color: #393b40;
-      padding: 1.5rem 2rem;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: 600;
-      color: #f07f0e;
-    }
-    .contact-section a {
+
+    .supervisor a {
       color: #f07f0e;
       text-decoration: underline;
     }
-    .contact-section a:hover {
-      text-decoration: none;
+
+    .supervisor a:hover {
       color: #d26900;
+      text-decoration: none;
     }
+
+    .contact-box {
+      background-color: #2b2c31;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: #f07f0e;
+      font-weight: 500;
+    }
+
+    .contact-box a {
+      color: #f07f0e;
+      text-decoration: underline;
+    }
+
+    .contact-box a:hover {
+      color: #d26900;
+      text-decoration: none;
+    }
+
     .logo-bottom-right {
       position: fixed;
       bottom: 20px;
       right: 20px;
       height: 48px;
       width: auto;
-      z-index: 1500;
+      z-index: 1000;
       cursor: pointer;
       user-select: none;
     }
-    @media (max-width: 600px) {
-      main.scroll-container {
-        padding: 2rem 1.5rem 2rem;
-        font-size: 1rem;
+
+    @media (max-width: 700px) {
+      .section-split {
+        flex-direction: column;
       }
-      main h1 {
-        font-size: 1.8rem;
-      }
-      section h2 {
-        font-size: 1.2rem;
+
+      .team-grid {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -106,44 +179,54 @@
   </div>
 </header>
 
-<main class="scroll-container about-container">
-  <h1>About the AI Literacy Toolbox</h1>
+<main class="scroll-container">
+  <h1><span class="emoji-title"></span>About the AI Literacy Toolbox</h1>
 
-  <section>
-    <p>
-      Artificial Intelligence is becoming an essential part of our daily lives and workplaces.
-      This <strong>AI Literacy Toolbox</strong> was created to help close the knowledge gap, empowering people not just to use AI, but to understand and critically engage with it.
-    </p>
-    <p>
-      Our mission is to provide accessible and practical AI literacy for students, educators, and anyone curious.
-      The toolbox combines interactive learning modules with playful tools based on proven AI literacy frameworks.
-    </p>
+  <p class="intro">
+    The AI Literacy Toolbox is a student-built platform designed to help people better understand artificial intelligence. 
+    Through interactive tools and playful experiences, we aim to make AI concepts accessible, critical, and engaging.
+  </p>
+
+  <div class="section-split">
+    <div>
+      <h2> Why this Toolbox?</h2>
+      <p>
+        AI is shaping the world – but most people don’t know how it really works. 
+        This toolbox was created to bridge that knowledge gap, offering easy-to-use tools that teach, challenge, and spark curiosity.
+      </p>
+    </div>
+    <div>
+      <h2> How it started</h2>
+      <p>
+        The project began at the University of Duisburg-Essen as part of a research seminar. 
+        We explored AI literacy frameworks, evaluated learning resources, and built a collection of tools to help others engage meaningfully with AI.
+      </p>
+    </div>
+  </div>
+
+  <section class="team-section">
+    <h2> Meet the Team</h2>
+    <div class="team-grid">
+      <div class="team-member">Khan Sohail</div>
+      <div class="team-member">Kevin Flotow</div>
+      <div class="team-member">Mohammadreza Zahedizadehgan</div>
+      <div class="team-member">Rabia Karabulut</div>
+      <div class="team-member">Tharani Uruthirakumar</div>
+      <div class="team-member">Gousiha Rammohan</div>
+    </div>
+
+    <div class="supervisor">
+      Supervised by  
+      <a href="https://iachounta.com/website/" target="_blank" rel="noopener noreferrer">
+        Prof. Dr. Irene-Angelica Chounta
+      </a>
+    </div>
   </section>
 
-  <section>
-    <p>
-      Developed as a university project at the 
-      <em>University of Duisburg-Essen</em>, we researched frameworks, collected valuable tools, and built a platform for learning and collaboration.
-    </p>
-
-    <h2>Our Team</h2>
-    <ul>
-      <li>Khan Sohail</li>
-      <li>Kevin Flotow</li>
-      <li>Mohammadreza Zahedizadehgan</li>
-      <li>Rabia Karabulut</li>
-      <li>Tharani Uruthirakumar</li>
-      <li>Gousiha Rammohan</li>
-    </ul>
-
-    <p><strong>Supervised by:</strong> <a href="https://iachounta.com/website/" target="_blank" rel="noopener noreferrer" style="color: #f07f0e; text-decoration: underline;">Prof. Dr. Irene-Angelica Chounta</a></p>
-  </section>
-
-  <section class="contact-section">
-    <p>
-      Questions, suggestions, or ideas to improve the AI Literacy Toolbox? <a href="contact.html">Contact us!</a> We’d love to hear from you.
-    </p>
-  </section>
+  <div class="contact-box">
+     Want to collaborate or improve this platform?  
+    <a href="contact.html">Get in touch with us</a> — we’d love to hear from you.
+  </div>
 </main>
 
 <a href="about.html">
