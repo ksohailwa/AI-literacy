@@ -6,6 +6,24 @@
   <title>AI Toolbox - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .rating-stars {
+      width: 120px;
+      margin-top: 0.5rem;
+    }
+    cite.apa-citation {
+      display: block;
+      font-style: normal;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      color: #f07f0e;
+      text-align: right;
+    }
+    cite.apa-citation a {
+      color: #f07f0e;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
@@ -39,12 +57,12 @@
         <p>
           ❝ AI Literacy is a set of competencies that empower individuals to critically evaluate AI technologies, communicate and collaborate effectively with AI, and leverage AI as a tool online, at home, and in the workplace. ❞
         </p>
-        <cite>— Long &amp; Magerko, 2020</cite>
-        <p style="margin-top: 0.1rem; font-size: 0.9rem; color: #f07f0e; text-align: right;">
-          <a href="https://dl.acm.org/doi/10.1145/3313831.3376727" target="_blank" rel="noopener noreferrer" style="color: #f07f0e; text-decoration: underline;">
-            ACM Digital Library
+        <cite class="apa-citation">
+          Long, D., &amp; Magerko, B. (2023). <em>AI Literacy in K-12: A Framework for Action</em>. In <em>Proceedings of the 54th ACM Technical Symposium on Computer Science Education V. 2 (SIGCSE 2023)</em> (pp. 830–831). Association for Computing Machinery. 
+          <a href="https://doi.org/10.1145/3544549.3573808" target="_blank" rel="noopener noreferrer">
+            https://doi.org/10.1145/3544549.3573808
           </a>
-        </p>
+        </cite>
       </div>
     </div>
   </section>
@@ -52,20 +70,28 @@
   <section class="toolbox tools-section">
     <div class="toolbox-title">Our Top 3 Tools for AI Literacy</div>
     <div class="tool-row">
-      <a href="https://murdermysterai.itch.io/deathdetectives" target="_blank" class="tool-card tool-link" >
+      <a href="https://murdermysterai.itch.io/deathdetectives" target="_blank" class="tool-card tool-link">
         <h3>Mystery Cat</h3>
         <img src="assets/MurderMystery.png" alt="Mystery Cat" />
         <p>Learn about pattern recognition through an interactive game.</p>
+        <img class="rating-stars" src="assets/Star_rating_5_of_5.png" alt="5 stars" />
+        <p class="age-recommendation">Recommended age: 18+</p>
       </a>
+
       <div class="tool-card">
         <h3>Quizzer AI</h3>
         <img src="assets/Quiz.png" alt="Quizzer AI" />
         <p>Test your knowledge about AI with our quiz.</p>
+        <img class="rating-stars" src="assets/Star_rating_4_of_5.png" alt="4 stars" />
+        <p class="age-recommendation">Recommended age: 13–17</p>
       </div>
+
       <div class="tool-card">
         <h3>Think Link AI Memory</h3>
         <img src="assets/Memory.png" alt="Think Link AI Memory" />
         <p>Can you find the matching pAIrs.</p>
+        <img class="rating-stars" src="assets/Star_rating_3_of_5.png" alt="3 stars" />
+        <p class="age-recommendation">Recommended age: 16+</p>
       </div>
     </div>
   </section>
@@ -80,7 +106,6 @@
 </a>
 
 <script>
-
   document.addEventListener("DOMContentLoaded", () => {
     const currentPath = window.location.pathname.split("/").pop();
     const navLinks = document.querySelectorAll(".navbar a");
