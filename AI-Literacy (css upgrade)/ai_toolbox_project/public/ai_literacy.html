@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Literacy - AI Toolbox (Flip Cards)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       background-color: #1e1f21;
@@ -12,108 +13,6 @@
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 2rem;
-      background-color: #0d0d0d;
-      color: #fff;
-      border-bottom: 2px solid #f07f0e;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      gap: 1rem;
-    }
-
-    .logo-img {
-      height: 48px;
-      width: auto;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: nowrap; 
-      gap: 1rem;
-    }
-
-    .navbar {
-      display: flex;
-      gap: 0.6rem;
-      justify-content: flex-start;
-      flex-grow: 1;
-      min-width: 0; 
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-
-    .navbar a {
-      color: #ffffff;
-      background-color: transparent;
-      border: 1px solid #f07f0e;
-      font-size: 0.9rem;
-      padding: 0.3rem 0.8rem;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-    }
-
-    .navbar a:hover,
-    .navbar a.active {
-      background-color: #f07f0e;
-      color: #000;
-      box-shadow: 0 2px 8px rgba(240, 127, 14, 0.5);
-    }
-
-    .header-right {
-      flex-shrink: 0;
-      min-width: 280px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    .search {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      width: 100%;
-      max-width: 280px;
-    }
-
-    .search input {
-      flex: 1;
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
-      border: 1px solid #666;
-      background-color: #2d2f31;
-      color: #fff;
-    }
-
-    .search button {
-      padding: 0.4rem 0.8rem;
-      background-color: #f07f0e;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-
-    .search button:hover {
-      background-color: #d26b01;
     }
 
     .scroll-container {
@@ -202,7 +101,6 @@
       text-align: center;
     }
 
-  
     .flip-card-back {
       background: #1f2022;
       color: #ccc;
@@ -218,6 +116,7 @@
       margin: 0;
       list-style-type: disc;
     }
+
     .flip-card-back ul li {
       margin-bottom: 0.8rem;
       line-height: 1.4;
@@ -226,6 +125,7 @@
     .flip-card-back::-webkit-scrollbar {
       width: 8px;
     }
+
     .flip-card-back::-webkit-scrollbar-thumb {
       background-color: #f07f0e;
       border-radius: 10px;
@@ -271,7 +171,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
-      <a href="ai_literacy.html">AI Literacy</a>
+      <a href="ai_literacy.html" class="active">AI Literacy</a>
       <a href="tools.html">All Tools</a>
     </nav>
     <div class="header-right">
@@ -296,8 +196,8 @@
           <div class="flip-card-front">Conceptual Knowledge</div>
           <div class="flip-card-back">
             <ul>
-              <li>What AI is and isn't.</li>
-              <li>AI's capabilities and limits.</li>
+              <li>What AI is and isn’t.</li>
+              <li>AI’s capabilities and limits.</li>
               <li>Basics of ML and algorithms.</li>
               <li>Ethical concerns like bias.</li>
             </ul>
@@ -338,7 +238,7 @@
           <div class="flip-card-back">
             <ul>
               <li>Basic AI concepts knowledge.</li>
-              <li>Awareness of AI's strengths and limits.</li>
+              <li>Awareness of AI’s strengths and limits.</li>
             </ul>
           </div>
         </div>
@@ -406,6 +306,35 @@
 <a href="index.html">
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
+
+<script>
+  
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
 <script src="searchData.js"></script>
 <script src="script.js"></script>
 

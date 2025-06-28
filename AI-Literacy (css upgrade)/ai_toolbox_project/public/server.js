@@ -1,11 +1,15 @@
 // server.js
 const express = require('express');
 const cors = require('cors');
+
 // Nur Mongoose verwenden
 const mongoose = require('mongoose');
-
 const app = express();
 
+// logger importieren
+const logger = require('./logger');
+
+// this is still just the test-database
 mongoose.connect('mongodb://localhost:27017/myTips', {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -40,7 +44,9 @@ app.use(express.json());
 
 // Definiere das Schema -> definiert die genaue Struktur der Daten mit Datentypen
 const userUploadSchema = new mongoose.Schema({
-    uploaderEmail: { type: String,
+    author : { type:String ,
+               required: true },
+    uploaderEmail: { type: String ,
                      required: true ,
                      match:[ /.+\@.+\..+/ ,
                     "Please enter a valid E-Mail adress"]},          
@@ -85,7 +91,7 @@ app.get('/get-data' , async (req , res) => {
         const data = await uploadModel.find();
         res.json(data);
     } catch (error){
-        console.error("Fehler im Get Handler : " , error);
+        logger.error(`Fehler im Get Handler : ${err.message} `);
         res.status(500).json({
             message : 'Ein Fehler bei der Datenübertragung ist aufgetreten.'
         });
@@ -120,12 +126,11 @@ app.post('/add-entry', async (req, res) => {
 
         res.status(200).send('Daten erfolgreich gespeichert!');
     } catch (error) {
-        console.error('Fehler beim Speichern:', error);
+        logger.error(`Fehler beim Speichern der Daten : ${err.message`);
         res.status(500).send('Interner Serverfehler.');
     }
 });
 
-
 app.listen(port, () => {
-  console.log(`Server läuft auf http://localhost:${port}`);
+  logger.info(`Server läuft auf http://localhost:${port}`);
 });

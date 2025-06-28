@@ -3,17 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>All AI Literacy Tools</title>
+  <title>Submit Tool - AI Toolbox</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    main.scroll-container p.intro-text {
+    .intro-steps {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .intro-step {
       text-align: center;
-      color: #ffffff;
-      font-weight: 500;
-      margin-top: -0.5rem;
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
+      max-width: 180px;
+    }
+
+    .intro-step p {
+      margin: 0.5rem 0 0;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .intro-step small {
+      font-size: 0.85rem;
+      color: #ccc;
+      display: block;
+      margin-top: 0.25rem;
     }
   </style>
 </head>
@@ -22,7 +39,7 @@
 <header class="topbar">
   <div class="header-inner">
     <nav class="navbar">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="ai_literacy.html">AI Literacy</a>
@@ -38,40 +55,110 @@
 </header>
 
 <main class="scroll-container">
-  <h1>All AI Literacy Tools</h1>
-  <p class="intro-text">Browse our curated AI literacy tools to enhance your skills and knowledge in artificial intelligence.</p>
+  <h1 style="text-align: center;">Submit Your Tool</h1>
 
-  <div class="tools-section">
-    <div class="tool-row" id="toolsContainer">
-      <a href="https://murdermysterai.itch.io/deathdetectives" target="_blank" class="tool-card tool-link" >
-        <h3>Mystery Cat</h3>
-        <img src="assets/MurderMystery.png" alt="Mystery Cat" />
-        <p>Learn about pattern recognition through an interactive game.</p>
-      </a>
-      <div class="tool-card">
-        <h3>Quizzer AI</h3>
-        <img src="assets/Quiz.png" alt="Quizzer AI" />
-        <p>Test your knowledge about AI with our quiz.</p>
-      </div>
-      <div class="tool-card">
-        <h3>Think Link AI Memory</h3>
-        <img src="assets/Memory.png" alt="Think Link AI Memory" />
-        <p>Can you find the matching pAIrs.</p>
-      </div>
+  <p style="text-align: center; color: #ffffff; font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem;">
+    Help us grow the AI Toolbox!  
+    Share your interactive game, quiz or teaching tool to help others understand AI concepts in fun and accessible ways.
+  </p>
+
+  <div class="intro-steps">
+    <div class="intro-step">
+      <div style="font-size: 2rem;"></div>
+      <p>1. Fill in the form</p>
+      <small>Title, category, and short description</small>
+    </div>
+    <div class="intro-step">
+      <div style="font-size: 2rem;"></div>
+      <p>2. Add your link</p>
+      <small>Include GitHub or working version</small>
+    </div>
+    <div class="intro-step">
+      <div style="font-size: 2rem;"></div>
+      <p>3. We feature it</p>
+      <small>After review, your tool goes live!</small>
     </div>
   </div>
 
-  <div class="add-button">
-    <a href="submit.html" class="button-style">+ Add Tool</a>
-  </div>
+  <form>
+    <label for="title">Tool Title*</label>
+    <input type="text" id="title" name="title" placeholder="Enter tool name" required />
+
+    <label for="email">Contact Email*</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+    <label for="type">Type*</label>
+    <select id="type" name="type" required>
+      <option value="" disabled selected>Choose one</option>
+      <option value="game">Game</option>
+      <option value="education">Education</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="github">GitHub Link*</label>
+    <input type="url" id="github" name="github" placeholder="https://github.com/..." required />
+
+    <label for="thumbnailURL">Thumbnail URL</label>
+    <input type="url" id="thumbnailURL" name="thumbnailURL" placeholder="https://example.com/image.jpg" />
+
+    <label for="uploadTags">Tags (comma separated)</label>
+    <input type="text" id="uploadTags" name="uploadTags" placeholder="e.g. education, games, learning" />
+
+    <label for="ageRecommendation">Age Recommendation*</label>
+    <select id="ageRecommendation" name="ageRecommendation" required>
+      <option value="" disabled selected>Select age range</option>
+      <option value="all">All ages</option>
+      <option value="kids">Kids (5–12)</option>
+      <option value="teens">Teens (13–17)</option>
+      <option value="adults">Adults (18+)</option>
+    </select>
+
+    <label for="description">Description*</label>
+    <textarea id="description" name="description" rows="4" placeholder="Brief description..." required></textarea>
+
+    <button type="submit" class="submit-button">Submit</button>
+  </form>
 </main>
 
 <a href="index.html">
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
 
+<script>
+  function filterTools() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const tools = document.querySelectorAll('#toolsContainer .tool-card, #toolsContainer .tool-link');
+
+    tools.forEach(tool => {
+      const title = tool.querySelector('h3').textContent.toLowerCase();
+      const desc = tool.querySelector('p').textContent.toLowerCase();
+
+      if (title.includes(filter) || desc.includes(filter)) {
+        tool.style.display = '';
+      } else {
+        tool.style.display = 'none';
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    navLinks.forEach(link => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  });
+</script>
+
 <script src="searchData.js"></script>
 <script src="script.js"></script>
 
 </body>
 </html>
+
