@@ -63,6 +63,26 @@
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
     }
+
+    .form-intro {
+      text-align: center;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .logo-bottom-right {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      height: 48px;
+      width: auto;
+      z-index: 1500;
+      cursor: pointer;
+      user-select: none;
+    }
   </style>
 </head>
 <body>
@@ -87,6 +107,12 @@
 
 <main class="scroll-container">
   <h1>Contact Us</h1>
+
+  <p class="form-intro">
+    Got questions, suggestions, or ideas for collaboration?<br />
+    Fill out the form below and we’ll get back to you as soon as possible.
+  </p>
+
   <form>
     <label for="name">Name*</label>
     <input type="text" id="name" required />
@@ -196,13 +222,13 @@
       </p>
     </div>
   </div>
+</section>
 
-  <a href="contact.html">
-    <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
-  </a>
+<a href="contact.html">
+  <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
+</a>
 
 <script>
-
   document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
       const expanded = button.getAttribute('aria-expanded') === 'true';
@@ -229,7 +255,9 @@
     });
   });
 </script>
+
 <script src="searchData.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
