@@ -6,13 +6,40 @@
   <title>Submit Tool - AI Toolbox</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .intro-steps {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .intro-step {
+      text-align: center;
+      max-width: 180px;
+    }
+
+    .intro-step p {
+      margin: 0.5rem 0 0;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .intro-step small {
+      font-size: 0.85rem;
+      color: #ccc;
+      display: block;
+      margin-top: 0.25rem;
+    }
+  </style>
 </head>
 <body>
 
 <header class="topbar">
   <div class="header-inner">
     <nav class="navbar">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="ai_literacy.html">AI Literacy</a>
@@ -28,7 +55,31 @@
 </header>
 
 <main class="scroll-container">
-  <h1>Submit Your Tool</h1>
+  <h1 style="text-align: center;">Submit Your Tool</h1>
+
+  <p style="text-align: center; color: #ffffff; font-size: 1.1rem; max-width: 700px; margin: 0 auto 2rem;">
+    Help us grow the AI Toolbox!  
+    Share your interactive game, quiz or teaching tool to help others understand AI concepts in fun and accessible ways.
+  </p>
+
+  <div class="intro-steps">
+    <div class="intro-step">
+      <div style="font-size: 2rem;"></div>
+      <p>1. Fill in the form</p>
+      <small>Title, category, and short description</small>
+    </div>
+    <div class="intro-step">
+      <div style="font-size: 2rem;"></div>
+      <p>2. Add your link</p>
+      <small>Include GitHub or working version</small>
+    </div>
+    <div class="intro-step">
+      <div style="font-size: 2rem;"></div>
+      <p>3. We feature it</p>
+      <small>After review, your tool goes live!</small>
+    </div>
+  </div>
+
   <form>
     <label for="title">Tool Title*</label>
     <input type="text" id="title" name="title" placeholder="Enter tool name" required />
@@ -57,8 +108,8 @@
     <select id="ageRecommendation" name="ageRecommendation" required>
       <option value="" disabled selected>Select age range</option>
       <option value="all">All ages</option>
-      <option value="kids">Kids (5-12)</option>
-      <option value="teens">Teens (13-17)</option>
+      <option value="kids">Kids (5–12)</option>
+      <option value="teens">Teens (13–17)</option>
       <option value="adults">Adults (18+)</option>
     </select>
 
@@ -110,3 +161,4 @@
 
 </body>
 </html>
+
