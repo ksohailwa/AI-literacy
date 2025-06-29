@@ -1,1 +1,16 @@
-
+{
+  "name": "ai-literacy-toolbox",
+  "version": "1.0.0",
+  "description": "AI Literacy Toolbox with Node.js backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "winston": "^3.10.0"
+  }
+}
