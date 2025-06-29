@@ -2,11 +2,12 @@
 // importieren
 const { createLogger, format, transports } = require('winston');
 
-// Erstelle einen Logger mit Konfiguration
+// Logger mit Konfiguration
 const logger = createLogger({
+  // gibt level an ab dem geloggt wird -> also immer da 'info' gerungstes level ist
   level: 'info', // Standard-Log-Level (z. B. 'info', 'warn', 'error', 'debug')
   
-  // Formatierung für die Log-Ausgabe
+  // wie soll der log aussehen 
   format: format.combine(
     format.timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }), // Zeitstempel hinzufügen
     format.colorize(),                                   // Farben im Terminal (nur Konsole)
@@ -15,7 +16,7 @@ const logger = createLogger({
     })
   ),
 
-  // Definiere, wohin geloggt wird
+  // wohin wird geloggt -> einfache textdatei in loger folder 
   transports: [
     new transports.Console(),                                     // Terminal Ausgabe
     new transports.File({ filename: 'logs/combined.log' }),       // alles in combined.log um
@@ -23,5 +24,5 @@ const logger = createLogger({
   ]
 });
 
-// Exportiere den Logger damit du ihn in anderen Dateien verwenden kannst
+// logger exportieren -> verwenden in server.js und event.js
 module.exports = logger;

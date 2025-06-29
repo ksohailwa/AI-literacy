@@ -1,0 +1,18 @@
+# Ignore Node.js dependency directory
+node_modules
+
+# Ignore log files, as they should be handled by volumes or logging drivers
+logs/
+*.log
+
+# Ignore environment files - these are sensitive and should be injected at runtime
+.env
+
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore Docker-related files themselves
+Dockerfile
+docker-compose.yml
+.dockerignore
