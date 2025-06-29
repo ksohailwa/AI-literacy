@@ -110,11 +110,11 @@ const transporter = nodemailer.createTransport({
   port: process.env.SMTP_PORT,       //  Portnummer: 587 für STARTTLS, 465 für SSL/TLS, 25 ist oft blockiert
   secure: false,                     //  true = SSL/TLS (Port 465), false = STARTTLS (587)
 
-  requireTLS: true,                  //  TLS (Verschlüsselung) erzwingen – sicherer und meist erforderlich!
+  requireTLS: true,                  //  TLS (Verschlüsselung) erzwingen –> sicherer und meist erforderlich
 
   auth: {
     user: process.env.EMAIL_USER,     //  Login/Absenderadresse
-    pass: process.env.EMAIL_PASS      //  App-spezifisches Passwort (nicht unbedingt das normale E-Mail-Passwort!)
+    pass: process.env.EMAIL_PASS      //  App-spezifisches Passwort (nicht das normale email Passwort -> geht aber auch)
   }
 });
 /*
@@ -156,6 +156,7 @@ app.post('/send-email', (req, res) => {
     logger.info('E-Mail erfolgreich gesendet!' + info.response);
   });
 });
+
 
 app.listen(port, () => {
   logger.info(`Server läuft auf http://localhost:${port}`);

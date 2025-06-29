@@ -1,5 +1,8 @@
 //------------------------------------------Getter-Function section----------------------------------------------//
 
+// logger import 
+const logger = require("./logger");
+
 function validEmail(email){
   const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
   return regex.test(email);
@@ -119,8 +122,8 @@ submitButton.addEventListener("click" , async () => {
 
     } catch (error) {
       // Falls z. B. keine Verbindung zum Server möglich ist
+      logger.error('Fehler beim Absenden der Email' , err.message);
       console.error('Fehler beim Senden:', error);
       alert('Beim Senden ist ein Fehler aufgetreten.');
     }
   });
-})
