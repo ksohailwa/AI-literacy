@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const Tool = require('./models/dbTools.js');
 const dotenv = require('dotenv');
+const logger = require('./logger.js');
 
 // Nur Mongoose verwenden
 const mongoose = require('mongoose');
@@ -43,6 +44,7 @@ app.get('/get-data' , async (req , res) => {
         // mit find() werden alle Dokumente aus der Collection abgerufen -> gibt Array aus Objekten(Dokumenten) zurück
         const data = await Tool.find();
         res.json(data);
+        logger.info('Get-Anfrage auf Datenbank erfolgreich.');
     } catch (error){
         logger.error(`Fehler im Get Handler : ${err.message} `);
         res.status(500).json({
@@ -77,6 +79,7 @@ app.post('/add-entry', async (req, res) => {
 
         await newEntry.save();
 
+        logger.info('Datenbankeintrag erfolgreich eingefügt.')
         res.status(200).send('Daten erfolgreich gespeichert!');
     } catch (error) {
         logger.error(`Fehler beim Speichern der Daten : ${err.message}`);
