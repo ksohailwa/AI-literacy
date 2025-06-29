@@ -21,7 +21,7 @@ dotenv.config();
 const logger = require('./logger');
 
 // this is still just the test-database
-mongoose.connect('mongodb://localhost:27017/myTips', {
+mongoose.connect('mongodb://localhost:27017/AItoolboxes', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
