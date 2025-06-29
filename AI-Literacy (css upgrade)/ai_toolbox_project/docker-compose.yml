@@ -1,24 +1,41 @@
-version: "3.8"
+version: '3.8'
+
 services:
-  backend:
+  # The Node.js Application Service
+  app:
+    # Build the image from the Dockerfile in the current directory (.)
     build: .
+    # Name the container for easier identification
+    container_name: ai_toolbox_app
     ports:
+      # Map port 3000 on the host to port 3000 in the container
       - "3000:3000"
+    # Load environment variables from the .env file
+    env_file:
+      - .env
     volumes:
-      - .:/app
-      - /app/node_modules
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/ai_literacy
+      # Mount a host directory to the container to persist logs
+      - ./logs:/usr/src/app/logs
+    # Ensure the database is started before the app starts
     depends_on:
       - mongo
 
+  # The MongoDB Database Service
   mongo:
-    image: mongo:5.0
-    container_name: mongo
+    # Use the official MongoDB image from Docker Hub
+    image: mongo:6.0
+    container_name: ai_toolbox_db
     ports:
+      # (Optional) Expose the DB port to the host for debugging with tools like MongoDB Compass
       - "27017:27017"
     volumes:
+      # Use a named volume to persist database data even if the container is removed
       - mongo-data:/data/db
+    # You can also set initial DB user/password here using environment variables
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=user
+    #   - MONGO_INITDB_ROOT_PASSWORD=password
 
+# Define the named volume for the database
 volumes:
   mongo-data:
