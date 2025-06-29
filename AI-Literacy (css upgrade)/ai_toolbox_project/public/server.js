@@ -2,9 +2,12 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+// import the predefined dbSchema
 const Tool = require('./models/dbTools.js');
 const dotenv = require('dotenv');
 const logger = require('./logger.js');
+// nodemailer -> automatic emailGenerator
+const nodemailer = require('nodemailer');
 
 // Nur Mongoose verwenden
 const mongoose = require('mongoose');
@@ -36,6 +39,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Server ist live!');
 });
+
+//----------------------------------------------Database Section---------------------------------------------//
 
 // der Server sendet Daten an den Clienten mit der GET Anfrage
 app.get('/get-data' , async (req , res) => {
@@ -85,6 +90,68 @@ app.post('/add-entry', async (req, res) => {
         logger.error(`Fehler beim Speichern der Daten : ${err.message}`);
         res.status(500).send('Interner Serverfehler.');
     }
+});
+
+//----------------------------------------------E-Mail Section---------------------------------------------//
+// .env-check -> sind alle benötgten Informationen auch vorhanden
+if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+  logger.warn('Warnung: .env-Konfiguration scheint unvollständig zu sein!');
+}
+
+// Email-Transporter konfigurieren –> sagt aus über welchen Maildienst versendet wird
+// env-Datei erstellen und in '.gitignore' schreiben um sensible Daten zu schützen
+// process.env.blablabla -> gobales Objekt welches die privaten Werte aus der .env Datei ausliest
+const transporter = nodemailer.createTransport({
+
+  // === Pflichtfelder ===
+  host: process.env.SMTP_HOST,       //  SMTP-Server (z. B. smtp.office365.com oder smtp.gmail.com)
+  port: process.env.SMTP_PORT,       //  Portnummer: 587 für STARTTLS, 465 für SSL/TLS, 25 ist oft blockiert
+  secure: false,                     //  true = SSL/TLS (Port 465), false = STARTTLS (587)
+
+  requireTLS: true,                  //  TLS (Verschlüsselung) erzwingen – sicherer und meist erforderlich!
+
+  auth: {
+    user: process.env.EMAIL_USER,     //  Login/Absenderadresse
+    pass: process.env.EMAIL_PASS      //  App-spezifisches Passwort (nicht unbedingt das normale E-Mail-Passwort!)
+  }
+});
+/*
+  // Optionale Felder -> vielleicht später wenn das projekt wächst
+
+  name: 'mein-client.local',         //  (Optional) Eigener Hostname im SMTP-Handshake (selten nötig)
+  tls: {
+    rejectUnauthorized: false        // ⚠️ Für Testserver mit selbstsignierten Zertifikaten – **nicht in Produktion**
+  },
+  pool: true,                       // (Optional) Aktiviert einen Verbindungspool für mehrere E-Mails
+  maxConnections: 5,                //  (Optional) Max. gleichzeitige SMTP-Verbindungen (nur bei pool: true)
+  maxMessages: 100,                 //  (Optional) Max. Anzahl E-Mails pro Verbindung
+  rateDelta: 1000,                  //  (Optional) Minimalzeit (in ms) zwischen zwei Nachrichten
+  rateLimit: 5,                     //  (Optional) Max. Nachrichten pro Sekunde (gut gegen Ratenbegrenzung)
+  logger: true,                     //  Aktiviert Logging für Transport-Aktivitäten (Debug-Zwecke)
+  debug: true                       //  Zeigt ausführliche Debug-Meldungen in der Konsole
+*/
+
+// POST-Route für den E-Mail-Versand
+app.post('/send-email', (req, res) => {
+  const { to } = req.body; // Zieladresse aus dem Request-Body holen
+
+  // Optionen für die E-Mail
+  const mailOptions = {
+    from: process.env.EMAIL_USER,     // Absenderadresse
+    to: to,                           // Empfängeradresse
+    subject: 'Testnachricht',         // Betreffzeile
+    text: 'test Blablabla test.'      // Nachrichtentext
+  };
+  
+  // E-Mail absenden
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      logger.error(`Fehler beim E-Mail-Versand: ${err.message}`);
+      return res.status(500).send('E-Mail konnte nicht gesendet werden.' + err.message);
+    }
+    console.log('E-Mail gesendet:', info.response);
+    logger.info('E-Mail erfolgreich gesendet!');
+  });
 });
 
 app.listen(port, () => {
