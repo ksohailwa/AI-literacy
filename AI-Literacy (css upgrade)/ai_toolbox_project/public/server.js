@@ -1,4 +1,4 @@
-// server.js
+//---------------------------------------Server Setup Sektion------------------------------------//
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -20,15 +20,15 @@ dotenv.config();
 // logger importieren
 const logger = require('./logger');
 
-// this is still just the test-database
-mongoose.connect('mongodb://localhost:27017/AItoolboxes', {
+// database conection aus der .env file holen -> security
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 .then(() => console.log('Mongoose verbunden mit MongoDB'))
 .catch(err => console.error('Mongoose-Verbindung fehlgeschlagen:', err));
 
-const port = 3000;
+const port = process.env.PORT;
 
 // CORS-Middleware für alle Domains (Entwicklung)
 app.use(cors());
@@ -82,6 +82,7 @@ app.post('/add-entry', async (req, res) => {
             rating: rating
         });
 
+        // neuen Db Eintrag abspeichern
         await newEntry.save();
 
         logger.info('Datenbankeintrag erfolgreich eingefügt.')
@@ -93,6 +94,7 @@ app.post('/add-entry', async (req, res) => {
 });
 
 //----------------------------------------------E-Mail Section---------------------------------------------//
+
 // .env-check -> sind alle benötgten Informationen auch vorhanden
 if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
   logger.warn('Warnung: .env-Konfiguration scheint unvollständig zu sein!');
@@ -118,9 +120,9 @@ const transporter = nodemailer.createTransport({
 /*
   // Optionale Felder -> vielleicht später wenn das projekt wächst
 
-  name: 'mein-client.local',         //  (Optional) Eigener Hostname im SMTP-Handshake (selten nötig)
+  name: 'mein-client.local',         //  (Optional) Eigener Hostname im SMTP-Handshake -> nicht oft verwendet
   tls: {
-    rejectUnauthorized: false        // ⚠️ Für Testserver mit selbstsignierten Zertifikaten – **nicht in Produktion**
+    rejectUnauthorized: false        //  Für Testserver mit selbstsignierten Zertifikaten –> nicht in produktion
   },
   pool: true,                       // (Optional) Aktiviert einen Verbindungspool für mehrere E-Mails
   maxConnections: 5,                //  (Optional) Max. gleichzeitige SMTP-Verbindungen (nur bei pool: true)
@@ -131,7 +133,8 @@ const transporter = nodemailer.createTransport({
   debug: true                       //  Zeigt ausführliche Debug-Meldungen in der Konsole
 */
 
-// POST-Route für den E-Mail-Versand
+//------------------------------------------------Email Versand Sektion-----------------------------------------//
+
 app.post('/send-email', (req, res) => {
   const { to } = req.body; // Zieladresse aus dem Request-Body holen
 
@@ -150,7 +153,7 @@ app.post('/send-email', (req, res) => {
       return res.status(500).send('E-Mail konnte nicht gesendet werden.' + err.message);
     }
     console.log('E-Mail gesendet:', info.response);
-    logger.info('E-Mail erfolgreich gesendet!');
+    logger.info('E-Mail erfolgreich gesendet!' + info.response);
   });
 });
 
