@@ -142,8 +142,8 @@ app.post('/send-email', (req, res) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,     // Absenderadresse
     to: to,                           // Empfängeradresse
-    subject: 'Testnachricht',         // Betreffzeile
-    text: 'test Blablabla test.'      // Nachrichtentext
+    subject: 'Thank you for your submission!',         // Betreffzeile
+    text: 'Thank you for submitting your project! We appreciate your contribution.Our team will review it as soon as possible.\n\nIn the meantime, feel free to explore the other tools available on our website.\n\nBest regards,\nThe Team'      // Nachrichtentext
   };
   
   // E-Mail absenden
