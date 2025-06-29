@@ -113,14 +113,14 @@ const transporter = nodemailer.createTransport({
   requireTLS: true,                  //  TLS (Verschlüsselung) erzwingen –> sicherer und meist erforderlich
 
   auth: {
-    user: process.env.EMAIL_USER,     //  Login/Absenderadresse
+    user: process.env.EMAIL_USER,     //  Absenderadresse
     pass: process.env.EMAIL_PASS      //  App-spezifisches Passwort (nicht das normale email Passwort -> geht aber auch)
   }
 });
 /*
   // Optionale Felder -> vielleicht später wenn das projekt wächst
 
-  name: 'mein-client.local',         //  (Optional) Eigener Hostname im SMTP-Handshake -> nicht oft verwendet
+  name: 'mein-client.local',         //  (Optional) Eigener Hostname im SMTP-Handshake -> nicht in produktion
   tls: {
     rejectUnauthorized: false        //  Für Testserver mit selbstsignierten Zertifikaten –> nicht in produktion
   },
