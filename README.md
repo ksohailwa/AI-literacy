@@ -16,10 +16,14 @@ The main schema for storing user uploads (`userUploadSchema`):
 
 ```javascript
 {
+    author: {
+        type: String,
+        required: true
+    },
     uploaderEmail: {
         type: String,
         required: true,
-        match: [/.+\@.+\..+/, "Please enter a valid E-Mail address"]
+        match: [/.+\@.+\..+/, "Please enter a valid E-Mail adress"]
     },
     uploadType: {
         type: String,
@@ -83,7 +87,8 @@ The schema for rating information (`ratingSchema`):
                 return arr.every(val => 
                     [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0].includes(val)
                 )
-            }
+            },
+            message: "Rating Typ ist nicht benutzbar: {VALUE}"
         }
     },
     averageRating: {
@@ -116,6 +121,7 @@ The schema for rating information (`ratingSchema`):
 - **Request Body**: JSON object containing upload details
   ```javascript
   {
+    author: String,
     uploaderEmail: String,
     uploadType: String,
     uploadDate: Date,
