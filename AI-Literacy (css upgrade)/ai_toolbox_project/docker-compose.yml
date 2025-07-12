@@ -1,41 +1,41 @@
+# This is a Docker Compose file for an AI Toolbox project.
+# It defines two services app and mongo.
 version: '3.8'
 
 services:
-  # The Node.js Application Service
   app:
-    # Build the image from the Dockerfile in the current directory (.)
-    build: .
-    # Name the container for easier identification
-    container_name: ai_toolbox_app
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    # It's good practice to name your containers for easier management
+    container_name: ai_toolbox_backend
     ports:
-      # Map port 3000 on the host to port 3000 in the container
-      - "3000:3000"
-    # Load environment variables from the .env file
+      - "80:8080"
     env_file:
       - .env
-    volumes:
-      # Mount a host directory to the container to persist logs
-      - ./logs:/usr/src/app/logs
-    # Ensure the database is started before the app starts
     depends_on:
-      - mongo
+      mongo:
+        # This is an excellent way to prevent your backend from starting
+        # until the database is truly ready to accept connections.
+        condition: service_healthy
 
-  # The MongoDB Database Service
+
   mongo:
-    # Use the official MongoDB image from Docker Hub
     image: mongo:6.0
     container_name: ai_toolbox_db
+    # In a production environment, you might remove the 'ports' section
+    # to prevent direct access to the database from outside the Docker network.
+    # The 'backend' service can still connect to it internally.
     ports:
-      # (Optional) Expose the DB port to the host for debugging with tools like MongoDB Compass
       - "27017:27017"
     volumes:
-      # Use a named volume to persist database data even if the container is removed
       - mongo-data:/data/db
-    # You can also set initial DB user/password here using environment variables
-    # environment:
-    #   - MONGO_INITDB_ROOT_USERNAME=user
-    #   - MONGO_INITDB_ROOT_PASSWORD=password
-
-# Define the named volume for the database
+    healthcheck:
+      # This healthcheck is what enables the 'service_healthy' condition above.
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
 volumes:
-  mongo-data:
+  mongo-data: {}
