@@ -4,6 +4,7 @@ node_modules
 # Ignore log files, as they should be handled by volumes or logging drivers
 logs/
 *.log
+npm-debug.log
 
 # Ignore environment files - these are sensitive and should be injected at runtime
 .env
@@ -13,6 +14,13 @@ logs/
 .gitignore
 
 # Ignore Docker-related files themselves
-Dockerfile
+Dockerfile*
 docker-compose.yml
 .dockerignore
+
+# Git version control files
+.git
+.gitignore
+
+# Test coverage reports
+coverage
