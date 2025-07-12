@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/ai-literacy-toolbox/style.css" />
   <style>
     .faq-item {
       margin-bottom: 1rem;
@@ -90,11 +90,11 @@
 <header class="topbar">
   <div class="header-inner">
     <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
-      <a href="ai_literacy.html">AI Literacy</a>
-      <a href="tools.html">All Tools</a>
+      <a href="/ai-literacy-toolbox/index.html">Home</a>
+      <a href="/ai-literacy-toolbox/about.html">About</a>
+      <a href="/ai-literacy-toolbox/contact.html" class="active">Contact</a>
+      <a href="/ai-literacy-toolbox/ai_literacy.html">AI Literacy</a>
+      <a href="/ai-literacy-toolbox/tools.html">All Tools</a>
     </nav>
     <div class="header-right">
       <div class="search">
@@ -113,6 +113,11 @@
     Fill out the form below and we’ll get back to you as soon as possible.
   </p>
 
+  <p class="form-intro" style="margin-top: -1rem;">
+    Not sure if you need to contact us? Maybe your question has already been answered below. 
+    Check out our FAQ section — we’ve gathered some of the most common queries to help you out quickly!
+  </p>
+
   <form>
     <label for="name">Name*</label>
     <input type="text" id="name" required />
@@ -123,7 +128,7 @@
     <label for="message">Message*</label>
     <textarea id="message" rows="5" required></textarea>
 
-    <button type="submit" class="submit-button">Send Message</button>
+    <button type="submit" class="submit-button" id="submit-button">Send Message</button>
   </form>
 </main>
 
@@ -155,7 +160,7 @@
     <div class="faq-answer">
       <p>
         You can submit new tools or games through the 
-        <a href="submit.html">Submit Tool</a> page by providing the required information such as title, contact email, type, GitHub link, and description.
+        <a href="/ai-literacy-toolbox/submit.html">Submit Tool</a> page by providing the required information such as title, contact email, type, GitHub link, and description.
       </p>
     </div>
   </div>
@@ -176,7 +181,7 @@
     <div class="faq-answer">
       <p>
         If you experience issues, try refreshing the page, clearing your browser cache, or using a different browser. If problems persist, please 
-        <a href="contact.html">contact us via the form</a> with a detailed description.
+        <a href="/ai-literacy-toolbox/contact.html">contact us via the form</a> with a detailed description.
       </p>
     </div>
   </div>
@@ -206,7 +211,7 @@
     <div class="faq-answer">
       <p>
         Yes, you can contact us through the 
-        <a href="contact.html">contact form</a> and suggest topics or tools you'd like to see added to the toolbox.
+        <a href="/ai-literacy-toolbox/contact.html">contact form</a> and suggest topics or tools you'd like to see added to the toolbox.
       </p>
     </div>
   </div>
@@ -218,17 +223,53 @@
     <div class="faq-answer">
       <p>
         We welcome contributions! Please get in touch with us via the 
-        <a href="contact.html">contact page</a> to discuss how you can help improve or translate the tools.
+        <a href="/ai-literacy-toolbox/contact.html">contact page</a> to discuss how you can help improve or translate the tools.
       </p>
     </div>
   </div>
 </section>
 
-<a href="contact.html">
+<a href="/ai-literacy-toolbox/contact.html">
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
 
 <script>
+
+  // eventListener für den contact-button
+  const submit = document.getElementById('submit-button');
+  submit.addEventListener('click' , async (event) => {
+
+    // prevents html-side from rerender
+    event.preventDefault();
+
+    // get input from user who wants to get in touch
+    const name = document.getElementById('name').value;
+    const emailFrom = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    try {
+      // request send-email-contact from server
+      const response = await fetch('/ai-literacy-toolbox/api/send-email-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'  // send JSON
+        },
+        body: JSON.stringify({ name , emailFrom , message })
+      });
+
+      // get text-answer from the server
+      const result = await response.text();
+
+      // display feedback to the user
+      alert(result);
+
+    } catch (error) {
+      // if error -> give user negative feedback and log error
+      console.error('Fehler beim Senden:', error);
+      alert('Beim Senden ist ein Fehler aufgetreten.');
+    }
+  });
+
   document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
       const expanded = button.getAttribute('aria-expanded') === 'true';
@@ -256,8 +297,8 @@
   });
 </script>
 
-<script src="searchData.js"></script>
-<script src="script.js"></script>
+<script src="/ai-literacy-toolbox/searchData.js"></script>
+<script src="/ai-literacy-toolbox/script.js"></script>
 
 </body>
 </html>
