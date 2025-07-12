@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Submit Tool - AI Toolbox</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/ai-literacy-toolbox/style.css" />
   <style>
     .intro-steps {
       display: flex;
@@ -39,11 +39,11 @@
 <header class="topbar">
   <div class="header-inner">
     <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="ai_literacy.html">AI Literacy</a>
-      <a href="tools.html">All Tools</a>
+      <a href="/ai-literacy-toolbox/index.html">Home</a>
+      <a href="/ai-literacy-toolbox/about.html">About</a>
+      <a href="/ai-literacy-toolbox/contact.html">Contact</a>
+      <a href="/ai-literacy-toolbox/ai_literacy.html">AI Literacy</a>
+      <a href="/ai-literacy-toolbox/tools.html">All Tools</a>
     </nav>
     <div class="header-right">
       <div class="search">
@@ -81,6 +81,10 @@
   </div>
 
   <form>
+
+    <label for="name">Your Name/Alias</label>
+    <input type="text" id="name" name="name"placeholder="Enter your name or an alias" required>
+    
     <label for="title">Tool Title*</label>
     <input type="text" id="title" name="title" placeholder="Enter tool name" required />
 
@@ -108,19 +112,19 @@
     <select id="ageRecommendation" name="ageRecommendation" required>
       <option value="" disabled selected>Select age range</option>
       <option value="all">All ages</option>
-      <option value="kids">Kids (5–12)</option>
-      <option value="teens">Teens (13–17)</option>
-      <option value="adults">Adults (18+)</option>
+      <option value="5-12">Kids (5-12)</option>
+      <option value="13-17">Teens (13-17)</option>
+      <option value="18+">Adults (18+)</option>
     </select>
 
     <label for="description">Description*</label>
     <textarea id="description" name="description" rows="4" placeholder="Brief description..." required></textarea>
 
-    <button type="submit" class="submit-button">Submit</button>
+    <button type="submit" class="submit-button" id="submit-button-js">Submit</button>
   </form>
 </main>
 
-<a href="index.html">
+<a href="/ai-literacy-toolbox/index.html">
   <img src="assets/logo.png" alt="Logo" class="logo-bottom-right" />
 </a>
 
@@ -156,8 +160,9 @@
   });
 </script>
 
-<script src="searchData.js"></script>
-<script src="script.js"></script>
+<script src="/ai-literacy-toolbox/searchData.js"></script>
+<script src="/ai-literacy-toolbox/events.js"></script>
+<script src="/ai-literacy-toolbox/script.js"></script>
 
 </body>
 </html>
