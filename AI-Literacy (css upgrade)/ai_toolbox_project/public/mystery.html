@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mystery Cat - AI Toolbox</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/ai-literacy-toolbox/style.css" />
   <style>
     body {
       margin: 0;
@@ -65,20 +65,41 @@
       box-shadow: 0 12px 30px rgba(240, 127, 14, 0.5);
       background: linear-gradient(45deg, #d26b01, #b85a00);
     }
+    .copyright {
+      color: #bbb;
+      font-size: 1rem;
+      margin-top: 24px;
+      letter-spacing: 0.2px;
+      text-align: center;
+      opacity: 0.88;
+      line-height: 1.5;
+    }
+    .copyright span {
+      color: #ffb366;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
-  <div class="game-launcher">
-    <h1>🎮 Mystery Cat</h1>
-    <p>Interactive Murder Mystery Adventure</p>
-    <div class="game-info">
-      <p><strong>🔍 Solve puzzles and uncover the truth</strong></p>
-      <p><strong>🎯 Use your detective skills</strong></p>
-      <p><strong>🎬 Immersive story experience</strong></p>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <div class="game-launcher">
+      <h1>🎮 Mystery Cat</h1>
+      <p>Interactive Murder Mystery Adventure</p>
+      <div class="game-info">
+        <p><strong>🔍 Solve puzzles and uncover the truth</strong></p>
+        <p><strong>🎯 Use your detective skills</strong></p>
+        <p><strong>🎬 Immersive story experience</strong></p>
+      </div>
+      <button class="start-button" onclick="window.open('https://eberwild.github.io/AI-Literacy/ai_toolbox_project/public/Games/MurderMysterAI/index.html', '_blank')">
+        🚀 START GAME
+      </button>
     </div>
-    <button class="start-button" onclick="window.open('https://ksohailwa.github.io/AI-literacy/AI-Literacy%20(css%20upgrade)/ai_toolbox_project/public/Games/MurderMysterAI/index.html', '_blank')">
-      🚀 START GAME
-    </button>
+    <div class="copyright">
+      <p>
+        Hosted with permission on the AI Literacy Toolbox.<br />
+        Game originally created and provided by <span>Xueni, Beyza, Jonathan, Jasmina, and Julia</span>.
+      </p>
+    </div>
   </div>
 </body>
-</html> 
+</html>
