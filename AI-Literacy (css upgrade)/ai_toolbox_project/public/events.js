@@ -1,8 +1,8 @@
 //------------------------------------------Getter-Function section----------------------------------------------//
-
-// logger import 
-const logger = require("./logger");
-
+function getName(){
+  const name = document.getElementById("name").value;
+  return name;
+}
 function validEmail(email){
   const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
   return regex.test(email);
@@ -29,62 +29,85 @@ function getDescription(){
 }
 function getThumbnail(){
     const thumb = document.getElementById("thumbnailURL").value;
-    return thumb
+    return thumb;
+}
+function getAgeRecommandation(){
+  const recom = document.getElementById('ageRecommendation').value;
+  return recom;
+}
+function getUploadTags(){
+  const tags = document.getElementById('uploadTags').value;
+  const arrayTags = tags.split(',');                        // macht aus String getrennt durch , ein Array
+  const noBlankArray = arrayTags.map(tag => tag.trim());    // entfernt blanks vor und hinter jedem element 
+  const noDuplicates = [...new Set(noBlankArray)];          // entfernt dopplete elemente durch ein Set
+  return noDuplicates;
 }
 
 // SUBMIT-BUTTON event
 const submitButton = document.getElementById("submit-button-js");
-submitButton.addEventListener("click" , async () => {
-
-//------------------------------------------Get-Input section----------------------------------------------//
+submitButton.addEventListener("click" , async (event) => {
   
-    // additional validation of the userinput  
-    const uploaderEmail = getEmail();
-    if(validEmail(uploaderEmail)){
+  // verhindert neuLaden der seite
+  event.preventDefault();
 
-    } else {
-        console.warn("Email validation was not succesfull.")
+//------------------------------------------Validate-Input section----------------------------------------------//
+  
+  // check uploadername
+    const uploaderName = getName();
+    if(uploaderName.trim() === ''){
+      throw new Error('Uploadername cant be empty.');
+    }
+
+  // check uploaderemail 
+    const uploaderEmail = getEmail();
+    if(!validEmail(uploaderEmail)){
+      throw new Error('Please enter a valid Email adress.');
     }
     
+  // check uploadType
     const types = ["game" , "education" , "other"];
     const uploadType = getType();
-    if(types.includes(uploadType)){
-      
-    } else {
-      console.warn("Wrong Input.")
+    if(!types.includes(uploadType)){
+      throw new Error(`Invalid input : ${uploadType}`);
     }
-    
-    const uploadTitle = getTitle();
+      
     
     // server can save the uploadDate as an Date object
     const uploadDate = new Date().toISOString(); 
     const fileURL = getLink();
     const uploadDescription = getDescription();
+    const thumbnailURL = getThumbnail();
+    const ageRecommendation = getAgeRecommandation();
+    const uploadTitle = getTitle();
+    const uploadTags = getUploadTags();
 
     //------------------------------------------Add-Entry section----------------------------------------------//
   
     try {
-        const response = await fetch('http://localhost:3000/add-entry', {
+        const response = await fetch('/ai-literacy-toolbox/api/add-entry', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                uploaderName,
                 uploaderEmail ,   
                 uploadType ,      
                 uploadDate ,      
-                ageRecommendation ,       
+                ageRecommendation ,   
                 uploadTitle ,     
                 uploadDescription , 
                 fileURL ,         
-                thumbnailURL ,   
-                uploadTags ,     
-                reviweStatus ,   
-                reviewNotes ,   
-                reviewedByAdmin ,  
-                rating  
+                thumbnailURL : String(thumbnailURL) ,  
+                uploadTags 
             })
         });
+
+        // abfragen ob die antwort ok ist
+        if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Server antwortet mit Status ${response.status}: ${errorText}`);
+        }
 
         const text = await response.text();
         alert(text);
@@ -94,19 +117,19 @@ submitButton.addEventListener("click" , async () => {
     }
 
   //------------------------------------------E-Mail section----------------------------------------------//
-  
+  /*
   // E-Mail Adresse aus dem InputFeld holen
   const email = getEmail();
 
     // prüfen ob Input leer ist
     if (!email) {
-      alert("Bitte gib eine E-Mail-Adresse ein.");
+      alert("Bitte gib eine gültige E-Mail-Adresse ein.");
       return;
     }
 
     try {
       // Anfrage an den Server senden – POST an /send-email
-      const response = await fetch('http://localhost:3000/send-email', {
+      const response = await fetch('/ai-literacy-toolbox/api/send-email-submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'  // JSON wird geschickt
@@ -122,8 +145,9 @@ submitButton.addEventListener("click" , async () => {
 
     } catch (error) {
       // Falls z. B. keine Verbindung zum Server möglich ist
-      logger.error('Fehler beim Absenden der Email' , err.message);
       console.error('Fehler beim Senden:', error);
       alert('Beim Senden ist ein Fehler aufgetreten.');
     }
+      */
   });
+  
